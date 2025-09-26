@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - YusiBooks</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Google Fonts for Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #0d7878;
+            --primary-light: #d4f0f0;
+            --primary-dark: #074a4a;
+            --accent-color: #c3231e;
+            --success-color: #0c8c36;
+            --text-dark: #212529;
+            --text-muted: #6c757d;
+            --border-radius-sm: 0.5rem;
+            --border-radius-md: 1rem;
+            --border-radius-lg: 1.5rem;
+            --border-radius-xl: 2rem;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 12px 35px rgba(0, 0, 0, 0.2);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.2s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Enhanced Button Styles */
+        .btn {
+            font-weight: 500;
+            border-radius: var(--border-radius-md);
+            transition: var(--transition-smooth);
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            --bs-btn-bg: var(--primary-color);
+            --bs-btn-border-color: var(--primary-color);
+            --bs-btn-hover-bg: var(--primary-dark);
+            --bs-btn-hover-border-color: var(--primary-dark);
+            --bs-btn-active-bg: var(--primary-dark);
+            --bs-btn-active-border-color: var(--primary-dark);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-accent {
+            --bs-btn-bg: var(--accent-color);
+            --bs-btn-border-color: var(--accent-color);
+            --bs-btn-hover-bg: #a91e1a;
+            --bs-btn-hover-border-color: #a91e1a;
+            --bs-btn-active-bg: #a91e1a;
+            --bs-btn-active-border-color: #a91e1a;
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline-primary {
+            --bs-btn-color: var(--primary-color);
+            --bs-btn-border-color: var(--primary-color);
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: var(--primary-color);
+            --bs-btn-hover-border-color: var(--primary-color);
+        }
+
+        /* Enhanced Logo Styles */
+        .navbar-brand .logo-y {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: #fff;
+            padding: 0.4rem 0.6rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 1.25rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Enhanced Card Styles */
+        .card {
+            border: none;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+            border-radius: var(--border-radius-lg);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-enhanced {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            height: 100%;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--border-radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon.accent {
+            background: linear-gradient(135deg, var(--accent-color), #a91e1a);
+        }
+
+        .feature-icon.success {
+            background: linear-gradient(135deg, var(--success-color), #0a7330);
+        }
+
+        /* Enhanced Navigation */
+        .navbar {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: var(--primary-color);
+            transition: var(--transition-fast);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .nav-link.active {
+            font-weight: 600;
+            color: var(--primary-color) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 8rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .hero-feature {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-feature:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .hero-feature i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-light);
+        }
+
+        /* Feature Sections */
+        .feature-section {
+            padding: 5rem 0;
+        }
+
+        .feature-section:nth-child(even) {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .feature-detail {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-detail:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .feature-detail-content {
+            flex: 1;
+        }
+
+        .feature-detail-visual {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary-light), #ffffff);
+            border-radius: var(--border-radius-xl);
+            padding: 3rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 2px solid rgba(13, 120, 120, 0.1);
+        }
+
+        .feature-detail-visual i {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-dark), #052e2e);
+            color: white;
+            padding: 5rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Testimonial */
+        .testimonial-section {
+            background: linear-gradient(135deg, var(--primary-light), #e6f7f7);
+            padding: 5rem 0;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem;
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1e1f1f;
+            color: #fff;
+            padding: 3rem 0 2rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent-color), #a91e1a);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        /* Responsive Enhancements */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 6rem 0 4rem;
+            }
+            
+            .hero-features {
+                gap: 1rem;
+            }
+            
+            .hero-feature {
+                padding: 1rem 1.5rem;
+            }
+            
+            .feature-detail {
+                flex-direction: column !important;
+                gap: 2rem;
+            }
+            
+            .feature-detail-visual {
+                padding: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        /* Brand Utility Classes */
+        .bg-accent { 
+            background-color: var(--accent-color) !important; 
+            color: white !important;
+        }
+        .bg-brand-primary { 
+            background-color: var(--primary-color) !important; 
+            color: white !important;
+        }
+        .text-brand-primary { 
+            color: var(--primary-color) !important;
+        }
+        .badge-brand-primary {
+            background-color: var(--primary-color) !important;
+            color: white !important;
+        }
+        .badge-brand-accent {
+            background-color: var(--accent-color) !important;
+            color: white !important;
+        }
+        .badge-brand-success {
+            background-color: var(--success-color) !important;
+            color: white !important;
+        }
+        
+        /* Bootstrap Color Override */
+        :root {
+            --bs-primary: #0d7878;
+            --bs-primary-rgb: 13, 120, 120;
+        }
+        
+        /* Utility Classes */
+        .rounded-3 { border-radius: var(--border-radius-md) !important; }
+        .rounded-4 { border-radius: var(--border-radius-lg) !important; }
+        .rounded-5 { border-radius: var(--border-radius-xl) !important; }
+        .opacity-90 { opacity: 0.9 !important; }
+
+        /* Animation Classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="logo-y me-2">Y</span>
+                <span class="fw-bold">YusiBooks</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="features.html">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="integrations.html">Integrations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#support">Support</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary" href="#signup">Get Started</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section position-relative">
+        <div class="container text-center position-relative">
+            <h1 class="display-3 fw-bold mb-4">
+                Everything You Need to<br>
+                <span style="color: var(--accent-color);">Manage Your Business</span>
+            </h1>
+            <p class="lead mb-5 opacity-90 col-lg-8 mx-auto">
+                From accounting and invoicing to project management and team collaboration, 
+                YusiBooks provides all the tools you need to run your business efficiently.
+            </p>
+            
+            <div class="d-flex justify-content-center gap-3 mb-5">
+                <a href="#signup" class="btn btn-light btn-lg px-4">
+                    <i class="fas fa-rocket me-2"></i>Try Free for 30 Days
+                </a>
+                <a href="#demo" class="btn btn-outline-light btn-lg px-4">
+                    <i class="fas fa-play me-2"></i>Watch Demo
+                </a>
+            </div>
+            
+            <!-- Hero Features -->
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <i class="fas fa-receipt"></i>
+                    <h6 class="fw-bold mb-1">Smart Invoicing</h6>
+                    <small class="opacity-75">Send professional invoices</small>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-chart-bar"></i>
+                    <h6 class="fw-bold mb-1">Financial Reports</h6>
+                    <small class="opacity-75">Real-time insights</small>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-users"></i>
+                    <h6 class="fw-bold mb-1">Team Management</h6>
+                    <small class="opacity-75">Collaborate effectively</small>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h6 class="fw-bold mb-1">Mobile Ready</h6>
+                    <small class="opacity-75">Work from anywhere</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Features Grid -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Powerful Features for Growing Businesses</h2>
+                <p class="lead text-muted col-lg-8 mx-auto">
+                    Discover how YusiBooks can streamline your workflow and boost productivity with our comprehensive suite of business tools.
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Invoicing & Billing -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card feature-card card-enhanced p-4 text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Smart Invoicing</h4>
+                        <p class="text-muted mb-4">Create professional invoices in seconds. Set up recurring billing, accept online payments, and track invoice status in real-time.</p>
+                        <ul class="list-unstyled text-start">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Professional invoice templates</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Recurring billing automation</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Online payment processing</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Payment status tracking</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Financial Reporting -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card feature-card card-enhanced p-4 text-center">
+                        <div class="feature-icon mx-auto accent">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Financial Reports</h4>
+                        <p class="text-muted mb-4">Get instant insights into your business performance with comprehensive financial reports and real-time analytics.</p>
+                        <ul class="list-unstyled text-start">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Real-time profit & loss</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Cash flow statements</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Tax-ready reports</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Custom dashboard views</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Expense Tracking -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card feature-card card-enhanced p-4 text-center">
+                        <div class="feature-icon mx-auto success">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Expense Tracking</h4>
+                        <p class="text-muted mb-4">Capture receipts with your phone, categorize expenses automatically, and track spending across projects and teams.</p>
+                        <ul class="list-unstyled text-start">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Mobile receipt capture</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Auto-categorization</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Mileage tracking</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Expense approvals</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Time Tracking -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card feature-card card-enhanced p-4 text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Time Tracking</h4>
+                        <p class="text-muted mb-4">Track billable hours accurately, manage team productivity, and convert time logs into invoices automatically.</p>
+                        <ul class="list-unstyled text-start">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>One-click time tracking</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Project time allocation</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Team productivity insights</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Automatic invoice generation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project Management -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card feature-card card-enhanced p-4 text-center">
+                        <div class="feature-icon mx-auto accent">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Project Management</h4>
+                        <p class="text-muted mb-4">Keep projects on track with task management, milestone tracking, and team collaboration tools.</p>
+                        <ul class="list-unstyled text-start">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Task assignment & tracking</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Project timelines</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>File sharing & comments</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Progress reporting</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Client Management -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card feature-card card-enhanced p-4 text-center">
+                        <div class="feature-icon mx-auto success">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Client Management</h4>
+                        <p class="text-muted mb-4">Build stronger client relationships with contact management, communication history, and client portals.</p>
+                        <ul class="list-unstyled text-start">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Contact database</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Communication history</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Client portals</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Proposal management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Details Section -->
+    <section class="feature-section">
+        <div class="container">
+            <!-- Invoicing Detail -->
+            <div class="feature-detail">
+                <div class="feature-detail-content">
+                    <h2 class="display-6 fw-bold mb-4">Create Professional Invoices in Minutes</h2>
+                    <p class="lead text-muted mb-4">
+                        Stop spending hours on paperwork. Our smart invoicing system creates professional invoices 
+                        automatically from your time tracking and project data.
+                    </p>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary text-white rounded-circle p-2 me-3">
+                                    <i class="fas fa-magic"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Auto-Fill from Projects</h6>
+                                    <small class="text-muted">Pull data automatically</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-accent text-white rounded-circle p-2 me-3">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Accept Online Payments</h6>
+                                    <small class="text-muted">Get paid faster</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#demo" class="btn btn-primary btn-lg">See Invoicing Demo</a>
+                </div>
+                <div class="feature-detail-visual">
+                    <i class="fas fa-file-invoice"></i>
+                    <h4 class="fw-bold mt-3 mb-2">Invoice Generator</h4>
+                    <p class="text-muted">Professional templates with your branding</p>
+                    <div class="mt-4">
+                        <span class="badge bg-success me-2">Auto-generated</span>
+                        <span class="badge bg-primary me-2">Mobile friendly</span>
+                        <span class="badge bg-warning text-dark">Customizable</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reporting Detail -->
+            <div class="feature-detail">
+                <div class="feature-detail-content">
+                    <h2 class="display-6 fw-bold mb-4">Make Data-Driven Business Decisions</h2>
+                    <p class="lead text-muted mb-4">
+                        Get real-time insights into your business performance with comprehensive reports 
+                        that help you understand where you're making money and where you can improve.
+                    </p>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-success text-white rounded-circle p-2 me-3">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Visual Analytics</h6>
+                                    <small class="text-muted">Charts and graphs</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary text-white rounded-circle p-2 me-3">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Export Reports</h6>
+                                    <small class="text-muted">PDF, Excel, CSV</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#demo" class="btn btn-accent btn-lg">Explore Reports</a>
+                </div>
+                <div class="feature-detail-visual">
+                    <i class="fas fa-chart-pie"></i>
+                    <h4 class="fw-bold mt-3 mb-2">Financial Dashboard</h4>
+                    <p class="text-muted">Real-time business insights at a glance</p>
+                    <div class="mt-4">
+                        <span class="badge bg-success me-2">Real-time</span>
+                        <span class="badge bg-primary me-2">Interactive</span>
+                        <span class="badge bg-warning text-dark">Shareable</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Collaboration Detail -->
+            <div class="feature-detail">
+                <div class="feature-detail-content">
+                    <h2 class="display-6 fw-bold mb-4">Collaborate Seamlessly with Your Team</h2>
+                    <p class="lead text-muted mb-4">
+                        Keep everyone on the same page with built-in collaboration tools, project discussions, 
+                        and real-time updates across your entire team.
+                    </p>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary text-white rounded-circle p-2 me-3">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Team Chat</h6>
+                                    <small class="text-muted">Discuss projects in context</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-success text-white rounded-circle p-2 me-3">
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Smart Notifications</h6>
+                                    <small class="text-muted">Stay updated on what matters</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#demo" class="btn btn-primary btn-lg">Try Collaboration Tools</a>
+                </div>
+                <div class="feature-detail-visual">
+                    <i class="fas fa-users-cog"></i>
+                    <h4 class="fw-bold mt-3 mb-2">Team Workspace</h4>
+                    <p class="text-muted">Centralized hub for all your team activities</p>
+                    <div class="mt-4">
+                        <span class="badge bg-success me-2">Real-time</span>
+                        <span class="badge bg-primary me-2">Organized</span>
+                        <span class="badge bg-warning text-dark">Productive</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Trusted by Thousands of Businesses</h2>
+                <p class="lead opacity-90">Join the growing community of successful businesses using YusiBooks</p>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number">$2M+</div>
+                        <div class="stat-label">Invoices Sent</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="testimonial-card">
+                        <p class="lead mb-4">
+                            YusiBooks has transformed how we manage our business. What used to take hours now takes minutes. 
+                            The time tracking and invoicing features alone have saved us 10+ hours per week.
+                        </p>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="bg-primary rounded-circle p-3 me-3">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                            <div class="text-start">
+                                <h6 class="fw-bold mb-0">Sarah Johnson</h6>
+                                <small class="text-muted">CEO, Creative Solutions Agency</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="display-5 fw-bold mb-4">Ready to Streamline Your Business?</h2>
+            <p class="lead mb-5 col-lg-8 mx-auto">
+                Join thousands of businesses already using YusiBooks to save time, increase productivity, and grow their revenue.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#signup" class="btn btn-light btn-lg px-5">
+                    <i class="fas fa-rocket me-2"></i>Start Free Trial
+                </a>
+                <a href="#contact" class="btn btn-outline-light btn-lg px-5">
+                    <i class="fas fa-phone me-2"></i>Talk to Sales
+                </a>
+            </div>
+            <div class="mt-4">
+                <small class="opacity-75">No credit card required • 30-day free trial • Cancel anytime</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="logo-y me-2">Y</span>
+                        <span class="fw-bold fs-4">YusiBooks</span>
+                    </div>
+                    <p class="text-light opacity-75">
+                        Empowering businesses with smart financial management and collaboration tools.
+                    </p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Product</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">Features</a></li>
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">Integrations</a></li>
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">Pricing</a></li>
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">API</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">Help Center</a></li>
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">Documentation</a></li>
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">Contact Us</a></li>
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">Status</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">About</a></li>
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">Blog</a></li>
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">Careers</a></li>
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">Partners</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Legal</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">Privacy</a></li>
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">Terms</a></li>
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">Security</a></li>
+                        <li><a href="#" class="text-light opacity-75 text-decoration-none">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 opacity-25">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-light opacity-75">&copy; 2024 YusiBooks. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-light me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-light me-3"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-light"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Animation on scroll
+            function animateOnScroll() {
+                const elements = document.querySelectorAll('.fade-in-up');
+                
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+
+            // Add fade-in-up class to feature cards and detail sections
+            const featureCards = document.querySelectorAll('.feature-card');
+            const featureDetails = document.querySelectorAll('.feature-detail');
+            
+            featureCards.forEach(card => card.classList.add('fade-in-up'));
+            featureDetails.forEach(detail => detail.classList.add('fade-in-up'));
+
+            // Initialize animations
+            window.addEventListener('scroll', animateOnScroll);
+            window.addEventListener('load', animateOnScroll);
+            animateOnScroll(); // Run on page load
+
+            // Feature card interactions
+            const featureCardsInteractive = document.querySelectorAll('.feature-card');
+            featureCardsInteractive.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-12px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Counter animation for stats
+            function animateCounters() {
+                const counters = document.querySelectorAll('.stat-number');
+                
+                counters.forEach(counter => {
+                    const target = counter.textContent;
+                    const numericValue = parseInt(target.replace(/[^\d]/g, ''));
+                    const suffix = target.replace(/[\d]/g, '');
+                    let count = 0;
+                    const increment = numericValue / 100;
+                    
+                    const updateCounter = () => {
+                        if (count < numericValue) {
+                            count += increment;
+                            counter.textContent = Math.floor(count) + suffix;
+                            setTimeout(updateCounter, 20);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+                    
+                    // Only animate when stats section is visible
+                    const statsSection = counter.closest('.stats-section');
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                updateCounter();
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    });
+                    
+                    observer.observe(statsSection);
+                });
+            }
+
+            animateCounters();
+
+            // Add parallax effect to hero section
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.hero-section');
+                const speed = scrolled * 0.5;
+                
+                if (parallax) {
+                    parallax.style.transform = `translateY(${speed}px)`;
+                }
+            });
+
+            // Cache control for development
+            if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+                const meta = document.createElement('meta');
+                meta.setAttribute('http-equiv', 'Cache-Control');
+                meta.setAttribute('content', 'no-cache, no-store, must-revalidate');
+                document.head.appendChild(meta);
+            }
+        });
+    </script>
+</body>
+</html>
