@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Safeguards - YusiBooks</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Google Fonts for Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #0d7878;
+            --primary-light: #d4f0f0;
+            --primary-dark: #074a4a;
+            --accent-color: #c3231e;
+            --success-color: #0c8c36;
+            --text-dark: #212529;
+            --text-muted: #6c757d;
+            --border-radius-sm: 0.5rem;
+            --border-radius-md: 1rem;
+            --border-radius-lg: 1.5rem;
+            --border-radius-xl: 2rem;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 12px 35px rgba(0, 0, 0, 0.2);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.2s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Enhanced Button Styles */
+        .btn {
+            font-weight: 500;
+            border-radius: var(--border-radius-md);
+            transition: var(--transition-smooth);
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            --bs-btn-bg: var(--primary-color);
+            --bs-btn-border-color: var(--primary-color);
+            --bs-btn-hover-bg: var(--primary-dark);
+            --bs-btn-hover-border-color: var(--primary-dark);
+            --bs-btn-active-bg: var(--primary-dark);
+            --bs-btn-active-border-color: var(--primary-dark);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-accent {
+            --bs-btn-bg: var(--accent-color);
+            --bs-btn-border-color: var(--accent-color);
+            --bs-btn-hover-bg: #a91e1a;
+            --bs-btn-hover-border-color: #a91e1a;
+            --bs-btn-active-bg: #a91e1a;
+            --bs-btn-active-border-color: #a91e1a;
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-outline-secondary {
+            --bs-btn-color: white;
+            --bs-btn-border-color: #fff;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: var(--primary-color);
+            --bs-btn-hover-border-color: #fff; 
+        }
+
+        /* Enhanced Logo Styles */
+        .navbar-brand .logo-y {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: #fff;
+            padding: 0.4rem 0.6rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 1.25rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-sm);
+        }
+         .container .logo img {
+            width: 150px;
+            transition: var(--transition-fast);
+        }
+
+        .container .logo img:hover {
+            transform: scale(1.05);
+        }
+
+
+        /* Enhanced Card Styles */
+        .card {
+            border: none;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+            border-radius: var(--border-radius-lg);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-enhanced {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        /* Enhanced Typography */
+        .display-4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero_title1 {
+            color: white;
+            position: relative;
+        }
+
+        .hero_title2 {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .feature_card_title {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .top-p {
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Enhanced Sections */
+        .security-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            position: relative;
+            color: white;
+        }
+
+        .security-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .security-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .security-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .reliability-section {
+            background: linear-gradient(135deg, var(--primary-dark), #052e2e);
+            color: #fff;
+            position: relative;
+        }
+
+        .reliability-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .reliability-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer {
+            background-color: #1e1f1f;
+        }
+
+        /* Security Icon Styles */
+        .security-icon {
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-smooth);
+        }
+
+        .security-icon:hover {
+            transform: scale(1.1) rotateY(10deg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .security-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            height: 100%;
+            transition: var(--transition-smooth);
+            border: none;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .security-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .compliance-badge {
+            background: linear-gradient(135deg, var(--success-color), #0a6b2a);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            display: inline-block;
+            margin: 0.25rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+        }
+
+        .compliance-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Enhanced Navigation */
+        .navbar {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: var(--primary-color);
+            transition: var(--transition-fast);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .nav-link.active {
+            font-weight: 600;
+            color: var(--primary-color) !important;
+        }
+
+        /* Enhanced Chatbot */
+        .chatbot-bubble {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            transition: var(--transition-smooth);
+        }
+
+        .chatbot-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(13, 120, 120, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(13, 120, 120, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(13, 120, 120, 0); }
+        }
+
+        /* Utility Classes */
+        .rounded-3 { border-radius: var(--border-radius-md) !important; }
+        .rounded-4 { border-radius: var(--border-radius-lg) !important; }
+        .rounded-5 { border-radius: var(--border-radius-xl) !important; }
+
+        /* Responsive Enhancements */
+        @media (max-width: 768px) {
+            .hero_title1 {
+                font-size: 2.5rem;
+            }
+            
+            .chatbot-bubble {
+                width: 3.5rem;
+                height: 3.5rem;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+            
+            .security-icon {
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top py-3">
+        <div class="container">
+            <div class="logo">
+                <a href="#" class="text-decoration-none">
+                    <div class="d-flex align-items-center">
+                    <a href="index.html"><img src="assets/yusi_books_logo.jpg" alt=""></a>
+                 </div>
+                </a>
+            </div>     
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" aria-current="page" href="features.html">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="small_business.html">Small Businesses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="accounts.html">Accountants</a>
+                        </li>
+                        <!--<li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="#">Resources</a>
+                        </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="pricing.html">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="contact_us.html">Contact Us</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex flex-column flex-lg-row align-items-center gap-3 mt-3 mt-lg-0">
+                        <a href="#" class="nav-link text-green fw-semibold me-lg-3">Login</a>
+                        <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Buy Now & Save</a>
+                        <a href="#" class="btn btn-accent rounded-pill px-4">Try Free</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Security Hero Section -->
+    <section class="security-hero py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <p class="top-p text-uppercase mb-3">Security & Reliability</p>
+                    <h1 class="display-4 hero_title1 mb-4">
+                        Your Data is Our Top Priority 
+                        
+                    </h1>
+                    <p class="lead mb-4">
+                        At YusiBooks, we understand that our customers rely on us as an important part of their business processes and record keeping. We take our responsibilities seriously, and the security and reliability of our systems and your data are our highest priorities.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <span class="compliance-badge">SOC 2 Certified</span>
+                        <span class="compliance-badge">PCI DSS Level 1</span>
+                        <span class="compliance-badge">GDPR Compliant</span>
+                        <span class="compliance-badge">ISO 27001</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Features Section -->
+    <section class="security-section py-5">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="display-5 fw-bold mb-4">
+                        <span style="color: var(--primary-color);">Comprehensive</span> 
+                        <span class="feature_card_title">Security Measures</span>
+                    </h2>
+                    <p class="lead text-muted">
+                        Multi-layered protection to keep your financial data safe and secure
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <!-- SSL Encryption -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="security-card h-100">
+                        <div class="security-icon mx-auto">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h4 class="feature_card_title text-center">256-bit SSL Encryption</h4>
+                        <p class="text-muted mb-4">
+                            All information traveling between your browser and YusiBooks is protected with industry-standard 256-bit SSL encryption. The lock icon in your browser verifies secure data transmission.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> End-to-end encryption</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Secure data in transit</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Certificate validation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Vulnerability Scanning -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="security-card h-100">
+                        <div class="security-icon mx-auto">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4 class="feature_card_title text-center">Continuous Monitoring</h4>
+                        <p class="text-muted mb-4">
+                            Our servers are continuously scanned for vulnerabilities by third-party security providers. Any identified issues are addressed immediately to maintain the highest security standards.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> 24/7 vulnerability scanning</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Third-party security audits</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Rapid threat response</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Physical Security -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="security-card h-100">
+                        <div class="security-icon mx-auto">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h4 class="feature_card_title text-center">Data Center Security</h4>
+                        <p class="text-muted mb-4">
+                            YusiBooks servers are located in state-of-the-art data centers with biometric access controls, constant surveillance, and robust infrastructure protection measures.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Biometric access controls</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> 24/7 surveillance</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Redundant power systems</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PCI Compliance -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="security-card h-100">
+                        <div class="security-icon mx-auto">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h4 class="feature_card_title text-center">PCI DSS Compliance</h4>
+                        <p class="text-muted mb-4">
+                            YusiBooks maintains PCI DSS Level 1 compliance for secure payment processing. We handle cardholder data in accordance with the highest industry standards.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> PCI DSS Level 1 certified</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Annual third-party audits</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Secure payment processing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Secure Development -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="security-card h-100">
+                        <div class="security-icon mx-auto">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4 class="feature_card_title text-center">Secure Development</h4>
+                        <p class="text-muted mb-4">
+                            Our development team follows OWASP secure coding practices and principles of least access to ensure application security from the ground up.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> OWASP best practices</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Principle of least access</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Code security reviews</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Breach Protection -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="security-card h-100">
+                        <div class="security-icon mx-auto">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="feature_card_title text-center">Incident Response</h4>
+                        <p class="text-muted mb-4">
+                            In the event of any security incident, we have comprehensive breach notification procedures to inform authorities and customers within required timeframes.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Rapid incident response</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Legal compliance</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Customer notification</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reliability Section -->
+    <section class="reliability-section py-5">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="display-5 fw-bold mb-4">
+                        Unmatched Reliability</span>
+                    </h2>
+                    <p class="lead mb-0">
+                        Enterprise-grade infrastructure designed for maximum uptime and data protection
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Redundant Infrastructure -->
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-start">
+                        <div class="security-icon me-4" style="background: linear-gradient(135deg, var(--accent-color), #a91e1a); width: 100px; height: 55px;">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div>
+                            <h4 class="fw-bold mb-3">Redundant Infrastructure</h4>
+                            <p class="mb-3">
+                                Our infrastructure uses redundant storage and servers across multiple geographic locations to ensure maximum availability and data protection.
+                            </p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Multiple data centers</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Automatic failover</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Load balancing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud Infrastructure -->
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-start">
+                        <div class="security-icon me-4" style="background: linear-gradient(135deg, var(--accent-color), #a91e1a); width: 100px; height: 55px;" >
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div>
+                            <h4 class="fw-bold mb-3">Enterprise Cloud Hosting</h4>
+                            <p class="mb-3">
+                                YusiBooks utilizes enterprise-grade cloud infrastructure to provide fast feature delivery, continuous innovation, and exceptional reliability.
+                            </p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> 99.9% uptime guarantee</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Global content delivery</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Scalable architecture</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Backup -->
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-start">
+                        <div class="security-icon me-4" style="background: linear-gradient(135deg, var(--accent-color), #a91e1a); width: 100px; height: 55px;">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div>
+                            <h4 class="fw-bold mb-3">Comprehensive Backups</h4>
+                            <p class="mb-3">
+                                Your data is replicated across multiple database servers and backed up nightly to secure offsite locations to prevent any data loss.
+                            </p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Real-time replication</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Nightly offsite backups</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Point-in-time recovery</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monitoring -->
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-start">
+                        <div class="security-icon me-4" style="background: linear-gradient(135deg, var(--accent-color), #a91e1a);  width: 90px; height: 55px;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h4 class="fw-bold mb-3">24/7 System Monitoring</h4>
+                            <p class="mb-3">
+                                Our systems are monitored around the clock to ensure optimal performance and immediate response to any potential issues.
+                            </p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Real-time alerting</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Performance optimization</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Proactive maintenance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="display-6 fw-bold mb-4">
+                        <span style="color: var(--primary-color);">Security</span> 
+                        <span class="feature_card_title">Questions?</span>
+                    </h2>
+                    <p class="lead text-muted mb-4">
+                        If you have any security concerns or questions, please don't hesitate to contact us directly. We're here to help ensure your data remains safe and secure.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="contact_us.html" class="btn btn-primary btn-lg">
+                            <i class="fas fa-envelope me-2"></i>Contact Security Team
+                        </a>
+                        
+                    </div>
+                    <p class="text-muted mt-3 small">
+                        For security researchers: View our <a href="#" class="text-decoration-none" style="color: var(--primary-color);">responsible disclosure policy</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+  <footer class="footer py-5 text-white">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                       
+                        <span class="fw-bold fs-4">YusiBooks</span>
+                    </div>
+                    <p class="text-white-50 mb-4">Streamlined accounting solutions for modern businesses. Manage your finances with confidence.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-facebook fs-5"></i></a>
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-twitter fs-5"></i></a>
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-linkedin fs-5"></i></a>
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-instagram fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Product</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Features</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Pricing</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Security</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Solutions</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Small Business</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Freelancers</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Accountants</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Enterprise</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Help Center</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Contact Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Live Chat</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Training</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Press</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-white-50 mb-0 small">&copy; 2025 YusiBooks. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex flex-column flex-md-row gap-3 justify-content-md-end">
+                        <a href="#" class="text-white-50 text-decoration-none small">Privacy Policy</a>
+                        <a href="#" class="text-white-50 text-decoration-none small">Terms of Service</a>
+                        <a href="#" class="text-white-50 text-decoration-none small">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Chatbot Bubble -->
+    <div class="chatbot-bubble" onclick="openChatbot()">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Chatbot functionality
+        function openChatbot() {
+            alert('Security Support Chat - Coming Soon!\n\nFor immediate security concerns, please contact:\nsecurity@yusibooks.com');
+        }
+
+        // Add entrance animations
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.security-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    card.style.transition = 'all 0.6s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 150);
+            });
+        });
+
+        // Enhanced hover effects for compliance badges
+        document.querySelectorAll('.compliance-badge').forEach(badge => {
+            badge.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+            
+            badge.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

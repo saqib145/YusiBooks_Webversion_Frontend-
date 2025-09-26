@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YusiBooks</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Google Fonts for Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #0d7878;
+            --primary-light: #d4f0f0;
+            --primary-dark: #074a4a;
+            --accent-color: #c3231e;
+            --success-color: #0c8c36;
+            --text-dark: #212529;
+            --text-muted: #6c757d;
+            --border-radius-sm: 0.5rem;
+            --border-radius-md: 1rem;
+            --border-radius-lg: 1.5rem;
+            --border-radius-xl: 2rem;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 12px 35px rgba(0, 0, 0, 0.2);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.2s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Enhanced Button Styles */
+        .btn {
+            font-weight: 500;
+            border-radius: var(--border-radius-md);
+            transition: var(--transition-smooth);
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            --bs-btn-bg: var(--primary-color);
+            --bs-btn-border-color: var(--primary-color);
+            --bs-btn-hover-bg: var(--primary-dark);
+            --bs-btn-hover-border-color: var(--primary-dark);
+            --bs-btn-active-bg: var(--primary-dark);
+            --bs-btn-active-border-color: var(--primary-dark);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-accent {
+            --bs-btn-bg: var(--accent-color);
+            --bs-btn-border-color: var(--accent-color);
+            --bs-btn-hover-bg: #a91e1a;
+            --bs-btn-hover-border-color: #a91e1a;
+            --bs-btn-active-bg: #a91e1a;
+            --bs-btn-active-border-color: #a91e1a;
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-outline-secondary {
+            --bs-btn-color: white;
+            --bs-btn-border-color: #fff;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: var(--primary-color);
+            --bs-btn-hover-border-color: #fff; 
+        }
+
+        .btn-buy-now-save {
+            background: linear-gradient(135deg, var(--accent-color), #d4271f);
+            color: white;
+            box-shadow: var(--shadow-sm);
+            border: none;
+        }
+
+        .btn-buy-now-save:hover {
+            background: linear-gradient(135deg, #a91e1a, var(--accent-color));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Enhanced Logo Styles */
+        .navbar-brand .logo-y {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: #fff;
+            padding: 0.4rem 0.6rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 1.25rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .container .logo img {
+            width: 150px;
+            transition: var(--transition-fast);
+        }
+
+        .container .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Enhanced Card Styles */
+        .card {
+            border: none;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+            border-radius: var(--border-radius-lg);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-enhanced {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        /* Enhanced Typography */
+        .display-4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero_title1 {
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .hero_title2 {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .feature_card_title {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .top-p {
+            color: var(--primary-light);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Enhanced Hero Section */
+        .hero-image {
+            width: 100%;
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-xl);
+            transition: var(--transition-smooth);
+        }
+
+        .hero-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Enhanced List Styles */
+        .list_icon {
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .enhanced-list li {
+            padding: 0.5rem 0;
+            font-weight: 500;
+            transition: var(--transition-fast);
+        }
+
+        .enhanced-list li:hover {
+            transform: translateX(5px);
+            color: var(--primary-dark);
+        }
+
+        /* Enhanced Sections */
+        .py-md-5 {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            position: relative;
+        }
+
+        .py-md-5::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .support-section {
+            background: linear-gradient(135deg, var(--primary-dark), #052e2e);
+            color: #fff;
+            position: relative;
+        }
+
+        .footer {
+            background-color:#1e1f1f;
+        }
+
+        .who-its-sect {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .testimonial-bg {
+            background: linear-gradient(135deg, var(--primary-light), #e6f7f7);
+            border-radius: var(--border-radius-xl);
+        }
+
+        .stats-card {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+            color: #fff;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Enhanced Partner Logos */
+        .partner-logo {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: var(--transition-smooth);
+            border-radius: var(--border-radius-sm);
+            padding: 1rem;
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05) rotateY(5deg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Enhanced Chatbot */
+        .chatbot-bubble {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            transition: var(--transition-smooth);
+        }
+
+        .chatbot-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(13, 120, 120, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(13, 120, 120, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(13, 120, 120, 0); }
+        }
+
+        /* Enhanced Navigation */
+        .navbar {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: var(--primary-color);
+            transition: var(--transition-fast);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .nav-link.active {
+            font-weight: 600;
+            color: var(--primary-color) !important;
+        }
+
+        /* Enhanced Modal */
+        .modal-content {
+            border: none;
+            box-shadow: var(--shadow-xl);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)) !important;
+        }
+
+        /* Utility Classes */
+        .rounded-3 { border-radius: var(--border-radius-md) !important; }
+        .rounded-4 { border-radius: var(--border-radius-lg) !important; }
+        .rounded-5 { border-radius: var(--border-radius-xl) !important; }
+
+        .text-card-link {
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        .text-link-your-way {
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        .top-p {
+            color: white; 
+        }
+        .hero_title2 {
+            color: var(--accent-color);
+        }
+        .list_icon {
+           
+        }
+        .list_icon i {
+            color: white;
+        }
+        .hero_title1 {
+            color: white
+        }
+        .feature_card_title {
+            color: var(--accent-color); 
+        }
+
+        /* Responsive Enhancements */
+        @media (max-width: 768px) {
+            .hero_title1 {
+                font-size: 2.5rem;
+            }
+            
+            .chatbot-bubble {
+                width: 3.5rem;
+                height: 3.5rem;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+            
+            .card {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.6s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.6s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Professional Feature Icons */
+        .feature-icon {
+            width: 4rem;
+            height: 4rem;
+            background: #0d7878;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+        }
+
+        .feature-icon:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon i {
+            font-size: 1.5rem;
+            color: white;
+            transition: var(--transition-smooth);
+        }
+
+        /* Professional Spacing */
+        .section-padding {
+            padding: 4rem 0;
+        }
+
+        .section-padding-lg {
+            padding: 5rem 0;
+        }
+        .text-green{
+        color: #0d7878;}
+    </style>
+</head>
+<body>
+
+    
+
+    <!-- Chatbot Bubble Trigger -->
+    <div class="chatbot-bubble" data-bs-toggle="modal" data-bs-target="#chatbotModal">
+        <i class="fa-solid fa-comment-dots"></i>
+    </div>
+
+    <!-- Chatbot Modal -->
+    <div class="modal fade" id="chatbotModal" tabindex="-1" aria-labelledby="chatbotModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4">
+                <div class="modal-header bg-primary text-white rounded-top-4">
+                    <h5 class="modal-title d-flex align-items-center" id="chatbotModalLabel">
+                        YusiBooks
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="bg-primary text-white p-2 rounded-circle flex-shrink-0">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="ms-3">
+                            <p class="fw-semibold text-primary">Hey there! I'm Addy, your friendly AI Rep from YusiBooks.</p>
+                            <p class="text-secondary-emphasis mt-1">Saw that you're interested in invoice and accounting software. I'm available if you have questions!</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mt-3">
+                        <input type="text" class="form-control rounded-pill me-2" placeholder="Type your message...">
+                        <button class="btn btn-primary rounded-pill">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top py-3">
+        <div class="container">
+            <div class="logo">
+                <a href="#" class="text-decoration-none">
+                    <div class="d-flex align-items-center">
+                    <a href="index.html"><img src="assets/yusi_books_logo.jpg" alt=""></a>
+                 </div>
+                </a>
+            </div>     
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" aria-current="page" href="features.html">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="small_business.html">Small Businesses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="accounts.html">Accountants</a>
+                        </li>
+                        <!--<li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="#">Resources</a>
+                        </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="pricing.html">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="contact_us.html">Contact Us</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex flex-column flex-lg-row align-items-center gap-3 mt-3 mt-lg-0">
+                        <a href="#" class="nav-link text-green fw-semibold me-lg-3">Login</a>
+                        <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Buy Now & Save</a>
+                        <a href="#" class="btn btn-accent rounded-pill px-4">Try Free</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-5 py-md-5 py-lg-6 bg-white">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <p class="top-p fw-semibold text-uppercase">Streamlined accounting solutions For modern businesses</p>
+                    <h1 class="hero_title1 display-4 fw-bold">
+                        Get Started Today Free For 3 Months.
+                        <span class="hero_title2 d-block"></span>
+                    </h1>
+                    <div class="d-flex flex-column flex-sm-row gap-3 mt-4">
+                        <a href="#" class="btn btn-primary btn-lg rounded-pill px-4">Buy Now & Save</a>
+                        <a href="#" class="btn btn-accent btn-lg rounded-pill px-4">Try Free</a>
+                    </div>
+                    <ul class="list-unstyled text-white mt-4">
+                        <li><i class="list_icon fa-solid fa-circle-check me-2"></i>Complete financial management:invoicing, quotes, expenses and accounts</li>
+                        <li><i class="list_icon fa-solid fa-circle-check me-2"></i>Collaborate with your team, clients, and accountant in one place</li>
+                        <li><i class="list_icon fa-solid fa-circle-check me-2"></i>Exceptional in-house customer support, trusted worldwide</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 order-first order-lg-last">
+                    <img src="assets/dashboard_img.jpg" alt="YusiBooks Dashboard" class="img-fluid rounded-4 shadow-lg hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5 py-md-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-white">Every Feature You Need <br> In One Platform.</h2>  
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 rounded-4 p-4 card-enhanced fade-in">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mx-auto">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <h5 class="feature_card_title card-title fw-bold">Invoicing</h5>
+                            <p class="card-text text-muted">Professional invoices made simple. Send instantly and keep payments flowing with automated reminders.</p>
+                            <a href="#" class="text-card-link text-decoration-none fw-semibold">Learn More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 rounded-4 p-4 card-enhanced fade-in">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mx-auto">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <h5 class="feature_card_title card-title fw-bold">Financial Reports</h5>
+                            <p class="card-text text-muted">Access powerful financial reports and analytics in real time to guide smarter business decisions.</p>
+                            <a href="#" class="text-card-link text-decoration-none fw-semibold">Learn More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 rounded-4 p-4 card-enhanced fade-in">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mx-auto">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <h5 class="feature_card_title card-title fw-bold">Team Collaboration</h5>
+                            <p class="card-text text-muted">Simplify teamwork by connecting with clients and accountants in a centralized workspace.</p>
+                            <a href="#" class="text-card-link text-decoration-none fw-semibold">Learn More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 rounded-4 p-4 card-enhanced fade-in">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mx-auto">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <h5 class="feature_card_title card-title fw-bold">Cyber Security</h5>
+                            <p class="card-text text-muted">Keep your data safe with top-tier security and encrypted cloud storage.</p>
+                            <a href="#" class="text-card-link text-decoration-none fw-semibold">Learn More <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who It's For Section -->
+    <section class="py-5 py-md-5 who-its-sect">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="fw-bold text-dark mb-3">Perfect for every business size</h2>
+                <p class="text-muted fs-5">From freelancers to growing enterprises</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 rounded-4 p-4 card-enhanced fade-in">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mx-auto">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <h5 class="feature_card_title fw-bold">Freelancers</h5>
+                            <p class="text-muted">Easy invoicing and expense management designed for freelancers and solo professionals.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 rounded-4 p-4 card-enhanced fade-in">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mx-auto">
+                                <i class="fa-solid fa-building"></i>
+                            </div>
+                            <h5 class="feature_card_title fw-bold">Small Businesses</h5>
+                            <p class="text-muted">All-in-one financial management for expanding teams and businesses.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 rounded-4 p-4 card-enhanced fade-in">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mx-auto">
+                                <i class="fa-solid fa-calculator"></i>
+                            </div>
+                            <h5 class="feature_card_title fw-bold">Accountants</h5>
+                            <p class="text-muted">Powerful tools designed for efficient multi-clients management.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-5 support-section">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-3">
+                    <div class="stats-card rounded-4 p-4 fade-in">
+                        <h3 class="display-5 fw-bold text-white">500K+</h3>
+                        <p class="text-white-50 mb-0">Happy Customers</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card rounded-4 p-4 fade-in">
+                        <h3 class="display-5 fw-bold text-white">99.9%</h3>
+                        <p class="text-white-50 mb-0">Uptime Guarantee</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card rounded-4 p-4 fade-in">
+                        <h3 class="display-5 fw-bold text-white">24/7</h3>
+                        <p class="text-white-50 mb-0">Customer Support</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card rounded-4 p-4 fade-in">
+                        <h3 class="display-5 fw-bold text-white">150+</h3>
+                        <p class="text-white-50 mb-0">Countries Served</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 py-md-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="fw-bold text-white mb-3">What our clients says</h2>
+                <p class="text-white fs-5">Join thousands of satisfied businesses</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 rounded-4 p-4 testimonial-bg card-enhanced fade-in">
+                        <div class="card-body">
+                            <div class="d-flex mb-3">
+                                <i class="fa-solid fa-star text-warning me-1"></i>
+                                <i class="fa-solid fa-star text-warning me-1"></i>
+                                <i class="fa-solid fa-star text-warning me-1"></i>
+                                <i class="fa-solid fa-star text-warning me-1"></i>
+                                <i class="fa-solid fa-star text-warning"></i>
+                            </div>
+                            <p class="text-dark mb-3">"YusiBooks has transformed how we manage our finances. The interface is intuitive and the support team is incredible."</p>
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary rounded-circle p-2 me-3">
+                                    <i class="fa-solid fa-user text-white"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-semibold">Sarah Johnson</h6>
+                                    <small class="text-muted">CEO, TechStart Inc.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 rounded-4 p-4 testimonial-bg card-enhanced fade-in">
+                        <div class="card-body">
+                            <div class="d-flex mb-3">
+                                <i class="fa-solid fa-star text-warning me-1"></i>
+                                <i class="fa-solid fa-star text-warning me-1"></i>
+                                <i class="fa-solid fa-star text-warning me-1"></i>
+                                <i class="fa-solid fa-star text-warning me-1"></i>
+                                <i class="fa-solid fa-star text-warning"></i>
+                            </div>
+                            <p class="text-dark mb-3">"As an accountant, I love how easy it is to collaborate with my clients. Everything is in one place and always up to date."</p>
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary rounded-circle p-2 me-3">
+                                    <i class="fa-solid fa-user text-white"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-semibold">Michael Chen</h6>
+                                    <small class="text-muted">Senior Accountant</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 rounded-4 p-4 testimonial-bg card-enhanced fade-in">
+                        <div class="card-body">
+                            <div class="d-flex mb-3">
+                                <i class="fa-solid fa-star text-warning me-1"></i>
+                                <i class="fa-solid fa-star text-warning me-1"></i>
+                                <i class="fa-solid fa-star text-warning me-1"></i>
+                                <i class="fa-solid fa-star text-warning me-1"></i>
+                                <i class="fa-solid fa-star text-warning"></i>
+                            </div>
+                            <p class="text-dark mb-3">"The automated invoicing feature has saved us hours every week. Our cash flow has improved significantly."</p>
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary rounded-circle p-2 me-3">
+                                    <i class="fa-solid fa-user text-white"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-semibold">Emma Rodriguez</h6>
+                                    <small class="text-muted">Business Owner</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 py-md-5 support-section">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 fade-in">
+                    <h2 class="fw-bold text-white mb-4">Ready to transform your business finances?</h2>
+                    <p class="text-white-50 fs-5 mb-4">Join thousands of growing businesses using YusiBooks to manage their finances.</p>
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                        <a href="#" class="btn btn-accent btn-lg rounded-pill px-5">Start Free Trial</a>
+                        <a href="#" class="btn btn-outline-light btn-lg rounded-pill px-5">Schedule Demo</a>
+                    </div>
+                    <p class="text-white-50 mt-3 small">No credit card required • Cancel anytime</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5 text-white">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                       
+                        <span class="fw-bold fs-4">YusiBooks</span>
+                    </div>
+                    <p class="text-white-50 mb-4">Streamlined accounting solutions for modern businesses. Manage your finances with confidence.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-facebook fs-5"></i></a>
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-twitter fs-5"></i></a>
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-linkedin fs-5"></i></a>
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-instagram fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Product</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Features</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Pricing</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Security</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Solutions</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Small Business</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Freelancers</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Accountants</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Enterprise</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Help Center</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Contact Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Live Chat</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Training</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Press</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-white-50 mb-0 small">&copy; 2025 YusiBooks. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex flex-column flex-md-row gap-3 justify-content-md-end">
+                        <a href="#" class="text-white-50 text-decoration-none small">Privacy Policy</a>
+                        <a href="#" class="text-white-50 text-decoration-none small">Terms of Service</a>
+                        <a href="#" class="text-white-50 text-decoration-none small">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- Custom JavaScript for enhanced interactions -->
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.05)';
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Enhanced chatbot interaction
+        document.querySelector('.chatbot-bubble').addEventListener('mouseenter', function() {
+            this.style.animationPlayState = 'paused';
+        });
+
+        document.querySelector('.chatbot-bubble').addEventListener('mouseleave', function() {
+            this.style.animationPlayState = 'running';
+        });
+
+        // Form interaction enhancements
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.transition = 'transform 0.2s ease';
+            });
+
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
+
+

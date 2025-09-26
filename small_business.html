@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Business Solutions - YusiBooks</title>
+    <meta name="description" content="Comprehensive business solutions designed specifically for your industry and company size. From startups to enterprises, we have the tools to help you succeed.">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Small Business Solutions - YusiBooks">
+    <meta property="og:description" content="Tailored business solutions for every industry and company size">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600">
+    <meta property="og:type" content="website">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Google Fonts for Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #0d7878;
+            --primary-light: #d4f0f0;
+            --primary-dark: #074a4a;
+            --accent-color: #c3231e;
+            --success-color: #0c8c36;
+            --text-dark: #212529;
+            --text-muted: #6c757d;
+            --border-radius-sm: 0.5rem;
+            --border-radius-md: 1rem;
+            --border-radius-lg: 1.5rem;
+            --border-radius-xl: 2rem;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 12px 35px rgba(0, 0, 0, 0.2);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.2s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Enhanced Button Styles */
+        .btn {
+            font-weight: 600;
+            border-radius: 12px;
+            transition: var(--transition-smooth);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            text-transform: none;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-accent {
+            --bs-btn-bg: var(--accent-color);
+            --bs-btn-border-color: var(--accent-color);
+            --bs-btn-hover-bg: #a91e1a;
+            --bs-btn-hover-border-color: #a91e1a;
+            --bs-btn-active-bg: #a91e1a;
+            --bs-btn-active-border-color: #a91e1a;
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            border: none;
+            box-shadow: 0 4px 15px rgba(13, 120, 120, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(13, 120, 120, 0.5);
+        }
+
+        .btn-outline-light {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            color: white;
+        }
+        .chatbot-bubble {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            transition: var(--transition-smooth);
+        }
+
+        .chatbot-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(13, 120, 120, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(13, 120, 120, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(13, 120, 120, 0); }
+        }
+
+        
+ /* Enhanced Navigation */
+        .navbar {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: var(--primary-color);
+            transition: var(--transition-fast);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .nav-link.active {
+            font-weight: 600;
+            color: var(--primary-color) !important;
+        }
+        
+        /* Enhanced Logo Styles */
+        .navbar-brand .logo-y {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: #fff;
+            padding: 0.4rem 0.6rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 1.25rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .container .logo img {
+            width: 150px;
+            transition: var(--transition-fast);
+        }
+
+        .container .logo img:hover {
+            transform: scale(1.05);
+        }
+    
+
+        /* Business Card Styles */
+        .business-card {
+            height: 100%;
+            border: none;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: var(--transition-smooth);
+            border-radius: 24px;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+            padding: 2.5rem 2rem;
+            cursor: pointer;
+        }
+
+        .business-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(135deg, #00c9a7, #0d7878, #c3231e);
+        }
+
+        .business-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Business Icons with Animation */
+        .business-icon {
+            width: 5.5rem;
+            height: 5.5rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .business-icon::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.2), transparent, rgba(255,255,255,0.2));
+            transition: transform 0.8s;
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        }
+
+        .business-card:hover .business-icon::after {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+
+        .business-card:hover .business-icon {
+            transform: scale(1.1) rotate(8deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Dynamic Icon Colors - YusiBooks Theme */
+        .icon-blue { background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); }
+        .icon-green { background: linear-gradient(135deg, var(--success-color), #0a5d2c); }
+        .icon-purple { background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); }
+        .icon-orange { background: linear-gradient(135deg, var(--accent-color), #9a1c18); }
+        .icon-teal { background: linear-gradient(135deg, var(--primary-light), var(--primary-color)); }
+        .icon-red { background: linear-gradient(135deg, var(--accent-color), #a11e1a); }
+        .icon-yellow { background: linear-gradient(135deg, #f59e0b, var(--primary-color)); }
+        .icon-pink { background: linear-gradient(135deg, var(--accent-color), var(--primary-dark)); }
+        .icon-indigo { background: linear-gradient(135deg, var(--primary-dark), var(--accent-color)); }
+        .icon-cyan { background: linear-gradient(135deg, var(--primary-light), var(--success-color)); }
+        .icon-emerald { background: linear-gradient(135deg, var(--success-color), var(--primary-color)); }
+        .icon-violet { background: linear-gradient(135deg, var(--primary-color), #4c1d95); }
+
+        .business-title {
+            color: #1f2937;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
+            line-height: 1.3;
+        }
+
+        .business-description {
+            color: #64748b;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.8rem;
+        }
+
+        .business-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .business-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .business-link:hover::after {
+            width: 100%;
+        }
+
+        .business-link:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        /* Category Title Styling */
+        .category-title {
+            color: #1f2937;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        /* Hero Section - YusiBooks Style */
+        .business-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .business-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 219, 226, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 194, 153, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.08) 0%, transparent 50%);
+        }
+
+        .hero-floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        .floating-shape:nth-child(3) {
+            top: 80%;
+            left: 30%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+            50% { transform: translateY(-30px) rotate(180deg); opacity: 0.2; }
+        }
+
+        .text-green {
+            color: #0d7878;
+        }
+
+        .footer {
+            background-color: #1e1f1f;
+        }
+
+        /* Section Backgrounds */
+        .section-business-size {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+
+        .section-industry {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+
+        /* Enhanced Interactive Elements */
+        .business-card:hover .business-title {
+            color: var(--primary-color);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .business-hero {
+                min-height: 80vh;
+            }
+            
+            .category-title {
+                font-size: 2rem;
+            }
+            
+            .business-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Animation classes */
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    
+
+    <!-- Chatbot Bubble Trigger -->
+    <div class="chatbot-bubble" data-bs-toggle="modal" data-bs-target="#chatbotModal">
+        <i class="fa-solid fa-comment-dots"></i>
+    </div>
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top py-3">
+        <div class="container">
+            <div class="logo">
+                <a href="#" class="text-decoration-none">
+                    <div class="d-flex align-items-center">
+                    <a href="index.html"><img src="assets/yusi_books_logo.jpg" alt=""></a>
+                 </div>
+                </a>
+            </div>     
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" aria-current="page" href="features.html">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-dark px-3" href="small_business.html">Small Businesses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="accounts.html">Accountants</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="#">Resources</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="pricing.html">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="contact_us.html">Contact Us</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex flex-column flex-lg-row align-items-center gap-3 mt-3 mt-lg-0">
+                        <a href="#" class="nav-link text-green fw-semibold me-lg-3">Login</a>
+                        <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Buy Now & Save</a>
+                        <a href="#" class="btn btn-accent rounded-pill px-4">Try Free</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+
+    <!-- Hero Section -->
+    <section id="home" class="business-hero" data-testid="hero-section">
+        <div class="hero-floating-elements">
+            <div class="floating-shape">
+                <i class="fas fa-chart-line fs-2"></i>
+            </div>
+            <div class="floating-shape">
+                <i class="fas fa-briefcase fs-2"></i>
+            </div>
+            <div class="floating-shape">
+                <i class="fas fa-users fs-2"></i>
+            </div>
+        </div>
+        
+        <div class="container position-relative" style="z-index: 2;">
+            <div class="row align-items-center min-vh-100 py-5">
+                <div class="col-lg-6 animate-slide-up" data-testid="hero-content">
+                    <h1 class="display-3 fw-bold mb-4" data-testid="hero-title">
+                        Smart Solutions <br>For Your Business <br> 
+                        <span class="text-white"></span>
+                    </h1>
+                    <p class="lead mb-5 text-light" data-testid="hero-description">
+                        Discover comprehensive business solutions designed specifically for your industry and company size. From startups to enterprises, we have the tools to help you succeed.
+                    </p>
+                    <div class="d-flex flex-column flex-sm-row gap-3">
+                        <a href="#business-size" class="btn btn-light btn-lg px-5 py-3" data-testid="btn-explore-solutions">
+                            <i class="fas fa-rocket me-2"></i>Explore Solutions
+                        </a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg px-5 py-3" data-testid="btn-watch-demo">
+                            <i class="fas fa-play me-2"></i>Watch Demo
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mt-5 mt-lg-0 animate-fade-in" data-testid="hero-image">
+                    <div class="position-relative">
+                        <img src="assets/business_hero_img.png" 
+                             alt="Professional small business owner in modern workspace" 
+                             class="img-fluid rounded-4 shadow-lg"
+                             data-testid="hero-main-image">
+                        
+                        <!-- Floating Stats Cards -->
+                        <div class="position-absolute top-0 start-0 translate-middle" data-testid="stat-businesses">
+                            <div class="card shadow-lg border-0 p-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-success rounded-circle me-2" style="width: 12px; height: 12px;"></div>
+                                    <span class="fw-semibold small">1000+ Businesses</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="position-absolute bottom-0 end-0 translate-middle" data-testid="stat-support">
+                            <div class="card shadow-lg border-0 p-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="rounded-circle me-2" style="width: 12px; height: 12px; background-color: var(--accent-color);"></div>
+                                    <span class="fw-semibold small">24/7 Support</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Size Section -->
+    <section id="business-size" class="section-business-size py-5" data-testid="business-size-section">
+        <div class="container py-5">
+            <div class="text-center mb-5 animate-slide-up" data-testid="business-size-header">
+                <h2 class="category-title" data-testid="business-size-title">Solutions by Business Size</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 600px;" data-testid="business-size-description">
+                    Whether you're just starting out or running an established enterprise, we have the right tools and solutions for your business size.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Sole Proprietorship -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="business-card h-100" data-testid="business-card-sole-proprietorship">
+                        <div class="business-icon icon-blue">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 class="business-title" data-testid="business-title-sole-proprietorship">Sole Proprietorship</h3>
+                        <p class="business-description" data-testid="business-description-sole-proprietorship">
+                            Perfect for individual entrepreneurs and single-owner businesses. Simple, cost-effective solutions to get you started.
+                        </p>
+                        <!--<a href="#" class="business-link" data-testid="business-link-sole-proprietorship">
+                            Learn More <i class="fas fa-arrow-right ms-2"></i>
+                        </a> -->
+                    </div>
+                </div>
+
+                <!-- Partnership -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="business-card h-100" data-testid="business-card-partnership">
+                        <div class="business-icon icon-green">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="business-title" data-testid="business-title-partnership">Partnership</h3>
+                        <p class="business-description" data-testid="business-description-partnership">
+                            Ideal for businesses with multiple owners. Shared responsibilities, resources, and collaborative decision-making tools.
+                        </p>
+                        <!--<a href="#" class="business-link" data-testid="business-link-partnership">
+                            Learn More <i class="fas fa-arrow-right ms-2"></i>
+                        </a>-->
+                    </div>
+                </div>
+
+                <!-- Corporation -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="business-card h-100" data-testid="business-card-corporation">
+                        <div class="business-icon icon-purple">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="business-title" data-testid="business-title-corporation">Corporation</h3>
+                        <p class="business-description" data-testid="business-description-corporation">
+                            Comprehensive solutions for incorporated businesses. Advanced features for complex organizational structures and compliance.
+                        </p>
+                        <!--<a href="#" class="business-link" data-testid="business-link-corporation">
+                            Learn More <i class="fas fa-arrow-right ms-2"></i>
+                        </a>-->
+                    </div>
+                </div>
+
+                <!-- Small Business -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="business-card h-100" data-testid="business-card-small-business">
+                        <div class="business-icon icon-orange">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3 class="business-title" data-testid="business-title-small-business">Small Business</h3>
+                        <p class="business-description" data-testid="business-description-small-business">
+                            Tailored for growing small businesses with 1-50 employees. Scalable solutions that grow with your business.
+                        </p>
+                        <!--<a href="#" class="business-link" data-testid="business-link-small-business">
+                            Learn More <i class="fas fa-arrow-right ms-2"></i>
+                        </a>-->
+                    </div>
+                </div>
+
+                <!-- Medium Business -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="business-card h-100" data-testid="business-card-medium-business">
+                        <div class="business-icon icon-teal">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3 class="business-title" data-testid="business-title-medium-business">Medium Business</h3>
+                        <p class="business-description" data-testid="business-description-medium-business">
+                            Perfect for established businesses with 50-250 employees. Advanced features for complex operations and multi-location management.
+                        </p>
+                        <!--<a href="#" class="business-link" data-testid="business-link-medium-business">
+                            Learn More <i class="fas fa-arrow-right ms-2"></i>
+                        </a>-->
+                    </div>
+                </div>
+
+                <!-- Large Enterprise -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="business-card h-100" data-testid="business-card-large-enterprise">
+                        <div class="business-icon icon-red">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <h3 class="business-title" data-testid="business-title-large-enterprise">Large Enterprise</h3>
+                        <p class="business-description" data-testid="business-description-large-enterprise">
+                            Enterprise-grade solutions for large organizations with 250+ employees. Comprehensive tools for complex organizational needs.
+                        </p>
+                        <!--<a href="#" class="business-link" data-testid="business-link-large-enterprise">
+                            Learn More <i class="fas fa-arrow-right ms-2"></i>
+                        </a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Section -->
+    <section id="industry" class="section-industry py-5" data-testid="industry-section">
+        <div class="container py-5">
+            <div class="text-center mb-5 animate-slide-up" data-testid="industry-header">
+                <h2 class="category-title" data-testid="industry-title">Solutions by Industry</h2>
+                <p class="lead text-muted mx-auto" style="max-width: 600px;" data-testid="industry-description">
+                    Industry-specific solutions designed to meet the unique challenges and requirements of your business sector.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Restaurant & Food Service -->
+                <div class="col-sm-6 col-lg-4 col-xl-3">
+                    <div class="business-card h-100" data-testid="business-card-restaurant">
+                        <div class="text-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                                 alt="Modern restaurant interior" 
+                                 class="img-fluid rounded-3 mb-3"
+                                 data-testid="industry-image-restaurant">
+                        </div>
+                        <div class="business-icon icon-red mx-auto mb-3" style="width: 4rem; height: 4rem; font-size: 1.5rem;">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h4 class="business-title text-center mb-3" data-testid="industry-title-restaurant">Restaurant & Food Service</h4>
+                        <p class="business-description text-center small" data-testid="industry-description-restaurant">
+                            Point of sale, inventory management, and customer loyalty programs.
+                        </p>
+                        <div class="text-center">
+                            <!--<a href="#" class="business-link" data-testid="industry-link-restaurant">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Retail -->
+                <div class="col-sm-6 col-lg-4 col-xl-3">
+                    <div class="business-card h-100" data-testid="business-card-retail">
+                        <div class="text-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                                 alt="Retail store front" 
+                                 class="img-fluid rounded-3 mb-3"
+                                 data-testid="industry-image-retail">
+                        </div>
+                        <div class="business-icon icon-blue mx-auto mb-3" style="width: 4rem; height: 4rem; font-size: 1.5rem;">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <h4 class="business-title text-center mb-3" data-testid="industry-title-retail">Retail</h4>
+                        <p class="business-description text-center small" data-testid="industry-description-retail">
+                            E-commerce integration, inventory tracking, and customer analytics.
+                        </p>
+                        <div class="text-center">
+                            <!--<a href="#" class="business-link" data-testid="industry-link-retail">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Healthcare -->
+                <div class="col-sm-6 col-lg-4 col-xl-3">
+                    <div class="business-card h-100" data-testid="business-card-healthcare">
+                        <div class="text-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                                 alt="Healthcare clinic" 
+                                 class="img-fluid rounded-3 mb-3"
+                                 data-testid="industry-image-healthcare">
+                        </div>
+                        <div class="business-icon icon-green mx-auto mb-3" style="width: 4rem; height: 4rem; font-size: 1.5rem;">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h4 class="business-title text-center mb-3" data-testid="industry-title-healthcare">Healthcare</h4>
+                        <p class="business-description text-center small" data-testid="industry-description-healthcare">
+                            Patient management, appointment scheduling, and HIPAA compliance.
+                        </p>
+                        <div class="text-center">
+                            <!--<a href="#" class="business-link" data-testid="industry-link-healthcare">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technology -->
+                <div class="col-sm-6 col-lg-4 col-xl-3">
+                    <div class="business-card h-100" data-testid="business-card-technology">
+                        <div class="text-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                                 alt="Technology startup office" 
+                                 class="img-fluid rounded-3 mb-3"
+                                 data-testid="industry-image-technology">
+                        </div>
+                        <div class="business-icon icon-purple mx-auto mb-3" style="width: 4rem; height: 4rem; font-size: 1.5rem;">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4 class="business-title text-center mb-3" data-testid="industry-title-technology">Technology</h4>
+                        <p class="business-description text-center small" data-testid="industry-description-technology">
+                            Project management, time tracking, and collaborative development tools.
+                        </p>
+                        <div class="text-center">
+                            <!--<a href="#" class="business-link" data-testid="industry-link-technology">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manufacturing -->
+                <div class="col-sm-6 col-lg-4 col-xl-3">
+                    <div class="business-card h-100" data-testid="business-card-manufacturing">
+                        <div class="text-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                                 alt="Manufacturing facility" 
+                                 class="img-fluid rounded-3 mb-3"
+                                 data-testid="industry-image-manufacturing">
+                        </div>
+                        <div class="business-icon icon-orange mx-auto mb-3" style="width: 4rem; height: 4rem; font-size: 1.5rem;">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4 class="business-title text-center mb-3" data-testid="industry-title-manufacturing">Manufacturing</h4>
+                        <p class="business-description text-center small" data-testid="industry-description-manufacturing">
+                            Supply chain management, quality control, and production planning.
+                        </p>
+                        <div class="text-center">
+                            <a href="#" class="business-link" data-testid="industry-link-manufacturing">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real Estate -->
+                <div class="col-sm-6 col-lg-4 col-xl-3">
+                    <div class="business-card h-100" data-testid="business-card-real-estate">
+                        <div class="text-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                                 alt="Real estate office" 
+                                 class="img-fluid rounded-3 mb-3"
+                                 data-testid="industry-image-real-estate">
+                        </div>
+                        <div class="business-icon icon-teal mx-auto mb-3" style="width: 4rem; height: 4rem; font-size: 1.5rem;">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h4 class="business-title text-center mb-3" data-testid="industry-title-real-estate">Real Estate</h4>
+                        <p class="business-description text-center small" data-testid="industry-description-real-estate">
+                            Property management, client relationship management, and listing tools.
+                        </p>
+                        <div class="text-center">
+                            <!--<a href="#" class="business-link" data-testid="industry-link-real-estate">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Services -->
+                <div class="col-sm-6 col-lg-4 col-xl-3">
+                    <div class="business-card h-100" data-testid="business-card-financial">
+                        <div class="text-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                                 alt="Financial services office" 
+                                 class="img-fluid rounded-3 mb-3"
+                                 data-testid="industry-image-financial">
+                        </div>
+                        <div class="business-icon icon-yellow mx-auto mb-3" style="width: 4rem; height: 4rem; font-size: 1.5rem;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 class="business-title text-center mb-3" data-testid="industry-title-financial">Financial Services</h4>
+                        <p class="business-description text-center small" data-testid="industry-description-financial">
+                            Portfolio management, compliance tracking, and client reporting.
+                        </p>
+                        <div class="text-center">
+                            <!--<a href="#" class="business-link" data-testid="industry-link-financial">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Services -->
+                <div class="col-sm-6 col-lg-4 col-xl-3">
+                    <div class="business-card h-100" data-testid="business-card-professional">
+                        <div class="text-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                                 alt="Professional services office" 
+                                 class="img-fluid rounded-3 mb-3"
+                                 data-testid="industry-image-professional">
+                        </div>
+                        <div class="business-icon icon-indigo mx-auto mb-3" style="width: 4rem; height: 4rem; font-size: 1.5rem;">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h4 class="business-title text-center mb-3" data-testid="industry-title-professional">Professional Services</h4>
+                        <p class="business-description text-center small" data-testid="industry-description-professional">
+                            Time billing, client management, and project collaboration tools.
+                        </p>
+                        <div class="text-center">
+                            <!--<a href="#" class="business-link" data-testid="industry-link-professional">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-5" style="background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));" data-testid="cta-section">
+        <div class="container py-5">
+            <div class="row justify-content-center text-center text-white">
+                <div class="col-lg-8">
+                    <h2 class="display-4 fw-bold mb-4" data-testid="cta-title">Ready to Transform Your Business?</h2>
+                    <p class="lead mb-5" data-testid="cta-description">
+                        Join thousands of businesses already using YusiBooks to streamline their operations and accelerate growth.
+                    </p>
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                        <a href="#" class="btn btn-light btn-lg px-5 py-3" data-testid="btn-start-trial">
+                            <i class="fas fa-rocket me-2"></i>Start Free Trial
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-lg px-5 py-3" data-testid="btn-schedule-demo">
+                            <i class="fas fa-calendar me-2"></i>Schedule Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+
+    <footer class="footer py-5 text-white">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                       
+                        <span class="fw-bold fs-4">YusiBooks</span>
+                    </div>
+                    <p class="text-white-50 mb-4">Streamlined accounting solutions for modern businesses. Manage your finances with confidence.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-facebook fs-5"></i></a>
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-twitter fs-5"></i></a>
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-linkedin fs-5"></i></a>
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-instagram fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Product</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Features</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Pricing</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Security</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Solutions</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Small Business</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Freelancers</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Accountants</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Enterprise</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Help Center</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Contact Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Live Chat</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Training</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Press</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-white-50 mb-0 small">&copy; 2025 YusiBooks. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex flex-column flex-md-row gap-3 justify-content-md-end">
+                        <a href="#" class="text-white-50 text-decoration-none small">Privacy Policy</a>
+                        <a href="#" class="text-white-50 text-decoration-none small">Terms of Service</a>
+                        <a href="#" class="text-white-50 text-decoration-none small">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Update active navigation link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop <= 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe animated elements
+        document.querySelectorAll('.animate-slide-up, .animate-fade-in').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Business card hover effects
+        document.querySelectorAll('.business-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.03)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

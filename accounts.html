@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accountant Hub - YusiBooks</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Google Fonts for Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #0d7878;
+            --primary-light: #d4f0f0;
+            --primary-dark: #074a4a;
+            --accent-color: #c3231e;
+            --success-color: #0c8c36;
+            --text-dark: #212529;
+            --text-muted: #6c757d;
+            --border-radius-sm: 0.5rem;
+            --border-radius-md: 1rem;
+            --border-radius-lg: 1.5rem;
+            --border-radius-xl: 2rem;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 12px 35px rgba(0, 0, 0, 0.2);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.2s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Enhanced Button Styles */
+        .btn {
+            font-weight: 600;
+            border-radius: 12px;
+            transition: var(--transition-smooth);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            text-transform: none;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-accent {
+            --bs-btn-bg: var(--accent-color);
+            --bs-btn-border-color: var(--accent-color);
+            --bs-btn-hover-bg: #a91e1a;
+            --bs-btn-hover-border-color: #a91e1a;
+            --bs-btn-active-bg: #a91e1a;
+            --bs-btn-active-border-color: #a91e1a;
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            border: none;
+            box-shadow: 0 4px 15px rgba(13, 120, 120, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(13, 120, 120, 0.5);
+        }
+
+        .btn-outline-light {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            color: white;
+        }
+         /* Enhanced Navigation */
+        .navbar {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: var(--primary-color);
+            transition: var(--transition-fast);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .nav-link.active {
+            font-weight: 600;
+            color: var(--primary-color) !important;
+        }
+              .navbar-brand .logo-y {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: #fff;
+            padding: 0.4rem 0.6rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 1.25rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .container .logo img {
+            width: 150px;
+            transition: var(--transition-fast);
+        }
+
+        .container .logo img:hover {
+            transform: scale(1.05);
+        }
+
+       
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 219, 226, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 194, 153, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.08) 0%, transparent 50%);
+        }
+
+        .hero-floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        .floating-shape:nth-child(3) {
+            top: 80%;
+            left: 30%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+            50% { transform: translateY(-30px) rotate(180deg); opacity: 0.2; }
+        }
+
+        /* Mock Interface */
+        .hero-interface {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interface-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .interface-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f57; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #28ca42; }
+
+        .interface-content {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 1.5rem;
+            color: #333;
+        }
+
+        /* Why Use Section */
+        .why-use-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            padding: 100px 0;
+        }
+
+        .dashboard-mockup {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-xl);
+            margin-bottom: 4rem;
+        }
+
+        .mockup-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f1f5f9;
+            margin-bottom: 2rem;
+        }
+
+        .mockup-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-item-mock {
+            padding: 0.5rem 1rem;
+            background: var(--primary-light);
+            color: var(--primary-color);
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Feature Cards */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.9));
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            transition: var(--transition-spring);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--success-color));
+        }
+
+        .feature-item:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: var(--shadow-2xl);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 1));
+        }
+
+        .feature-item:nth-child(odd):hover {
+            transform: translateY(-15px) scale(1.05) rotate(2deg);
+        }
+
+        .feature-item:nth-child(even):hover {
+            transform: translateY(-15px) scale(1.05) rotate(-2deg);
+        }
+
+        .feature-icon {
+            width: 5rem;
+            height: 5rem;
+            border-radius: var(--border-radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+            margin: 0 auto 2rem;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-spring);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Gradient Icon Colors */
+        .icon-gradient-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .icon-gradient-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .icon-gradient-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .icon-gradient-4 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .icon-gradient-5 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .icon-gradient-6 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .icon-gradient-7 {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+
+        .icon-gradient-8 {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .feature-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg) translateX(-100%);
+            transition: transform 0.8s;
+        }
+
+        .feature-item:hover .feature-icon {
+            transform: scale(1.2) rotate(12deg);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .feature-item:hover .feature-icon::before {
+            transform: rotate(45deg) translateX(100%);
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            letter-spacing: -0.025em;
+        }
+
+        .feature-description {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 1.05rem;
+            font-weight: 400;
+        }
+
+        /* Category Title */
+        .category-title {
+            color: #1f2937;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .category-title.white {
+            color: white;
+        }
+
+        .category-title.white::after {
+            background: linear-gradient(135deg, white, rgba(255, 255, 255, 0.7));
+        }
+         /* Audience Section */
+        .audience-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 100px 0;
+        }
+
+        .audience-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .audience-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 4rem 3rem;
+            border-radius: var(--border-radius-xl);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-2xl);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .audience-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-2xl), 0 40px 80px rgba(13, 120, 120, 0.3);
+        }
+
+        .audience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+
+        .audience-card.secondary {
+            background: linear-gradient(135deg, var(--primary-dark), #063333);
+        }
+
+        .audience-card.secondary:hover {
+            box-shadow: var(--shadow-2xl), 0 40px 80px rgba(7, 74, 74, 0.3);
+        }
+
+        .audience-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .audience-description {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+
+        /* What Makes Great Section */
+        .great-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .great-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 219, 226, 0.15) 0%, transparent 50%);
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            background: var(--success-color);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .person-image {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .person-placeholder {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color:#1e1f1f;
+        }
+
+        .who-its-sect {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .testimonial-bg {
+            background: linear-gradient(135deg, var(--primary-light), #e6f7f7);
+            border-radius: var(--border-radius-xl);
+        }
+
+        .stats-card {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+            color: #fff;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+.chatbot-bubble {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            transition: var(--transition-smooth);
+        }
+
+        .chatbot-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(13, 120, 120, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(13, 120, 120, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(13, 120, 120, 0); }
+        }
+
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .audience-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero {
+                min-height: auto;
+                padding: 100px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Chatbot Bubble Trigger -->
+    <div class="chatbot-bubble" data-bs-toggle="modal" data-bs-target="#chatbotModal">
+        <i class="fa-solid fa-comment-dots"></i>
+    </div>
+    <!-- Navigation -->
+
+     <nav class="navbar navbar-expand-lg navbar-light sticky-top py-3">
+        <div class="container">
+            <div class="logo">
+                <a href="#" class="text-decoration-none">
+                    <div class="d-flex align-items-center">
+                    <a href="index.html"><img src="assets/yusi_books_logo.jpg" alt=""></a>
+                 </div>
+                </a>
+            </div>     
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" aria-current="page" href="features.html">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="small_business.html">Small Businesses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-dark px-3" href="accounts.html">Accountants</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="#">Resources</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="pricing.html">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark px-3" href="contact_us.html">Contact Us</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex flex-column flex-lg-row align-items-center gap-3 mt-3 mt-lg-0">
+                        <a href="#" class="nav-link text-green fw-semibold me-lg-3">Login</a>
+                        <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Buy Now & Save</a>
+                        <a href="#" class="btn btn-accent rounded-pill px-4">Try Free</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-floating-elements">
+            <div class="floating-shape">
+                <i class="fas fa-chart-line fa-3x"></i>
+            </div>
+            <div class="floating-shape">
+                <i class="fas fa-users fa-3x"></i>
+            </div>
+            <div class="floating-shape">
+                <i class="fas fa-calculator fa-3x"></i>
+            </div>
+        </div>
+        
+        <div class="container position-relative" style="z-index: 2;">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="display-3 fw-bold mb-4 lh-1">
+                            <span class="text-white">YusiBooks</span>
+                            makes managing
+                            clients easier
+                        </h1>
+                        <p class="lead mb-5 opacity-90">
+                            Add clients and manage their books all in one place with the free YusiBooks Accountant Hub. All with a single login.
+                        </p>
+                        
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#signup" class="btn btn-accent btn-lg px-4 py-3">
+                                <i class="fas fa-user-plus me-2"></i>
+                                Become a Partner
+                            </a>
+                            <a href="#login" class="btn btn-outline-light btn-lg px-4 py-3">
+                                <i class="fas fa-sign-in-alt me-2"></i>
+                                Partner Login
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-interface">
+                        <div class="interface-header">
+                            <div class="interface-dot dot-red"></div>
+                            <div class="interface-dot dot-yellow"></div>
+                            <div class="interface-dot dot-green"></div>
+                        </div>
+                        <div class="interface-content">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="person-placeholder" style="width: 60px; height: 60px; font-size: 1.5rem; margin-right: 1rem;">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-1">Sarah Johnson, CPA</h6>
+                                    <small class="text-muted">Managing 24 client accounts</small>
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <div class="bg-light p-2 rounded text-center">
+                                        <div class="fw-bold text-primary">$2.4M</div>
+                                        <small>Revenue Managed</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="bg-light p-2 rounded text-center">
+                                        <div class="fw-bold text-success">99.8%</div>
+                                        <small>Accuracy Rate</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Use the Accountant Hub Section -->
+    <section class="why-use-section">
+        <div class="container">
+            <h2 class="category-title">Why use the Accountant Hub?</h2>
+            
+            <!-- Dashboard Mockup -->
+            <div class="dashboard-mockup">
+                <div class="mockup-header">
+                    <div class="mockup-nav">
+                        <div class="nav-item-mock">Dashboard</div>
+                        <div style="padding: 0.5rem 1rem; color: var(--text-muted);">Clients</div>
+                        <div style="padding: 0.5rem 1rem; color: var(--text-muted);">Reports</div>
+                        <div style="padding: 0.5rem 1rem; color: var(--text-muted);">Settings</div>
+                    </div>
+                </div>
+                
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-number">24</div>
+                        <div class="stat-label">Active Clients</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">$847K</div>
+                        <div class="stat-label">Monthly Revenue</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">156</div>
+                        <div class="stat-label">Invoices Processed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">On-Time Delivery</div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-8">
+                        <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px;">
+                            <h6 class="mb-3">Recent Client Activity</h6>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>Tech Startup Inc. - Invoice #1234</span>
+                                <span class="badge bg-success">Paid</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>Local Restaurant LLC - Monthly Report</span>
+                                <span class="badge bg-warning">Pending</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>Consulting Firm - Tax Filing</span>
+                                <span class="badge bg-primary">In Progress</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px;">
+                            <h6 class="mb-3">Quick Actions</h6>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary btn-sm">New Client</button>
+                                <button class="btn btn-outline-primary btn-sm">Generate Report</button>
+                                <button class="btn btn-outline-primary btn-sm">View Calendar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Grid -->
+     <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon icon-gradient-1">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h4 class="feature-title">Everything in one location</h4>
+                    <p class="feature-description">
+                        Set up your account and invite your clients. Once you're in, you'll have one-click access to your client's information and bookkeeping.
+                    </p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon icon-gradient-2">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h4 class="feature-title">Manage clients easily</h4>
+                    <p class="feature-description">
+                        From financial reporting to journal entries to customizable Chart of Accounts, you can support your clients 365 days a year or just at tax time—all from one location.
+                    </p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon icon-gradient-3">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h4 class="feature-title">Setup is simple</h4>
+                    <p class="feature-description">
+                        Adding a new client takes just a few seconds. Simply set up your client's account and invite them to join.
+                    </p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon icon-gradient-4">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4 class="feature-title">Built for you</h4>
+                    <p class="feature-description">
+                        The Accountant Hub was created in response to feedback from you. More features you requested will be rolled out periodically, so watch for updates.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who is the Accountant Hub designed for Section -->
+    <section class="audience-section">
+        <div class="container">
+            <h2 class="category-title">Who is the Accountant Hub designed for?</h2>
+            
+            <div class="text-center mb-4">
+                <a href="#signup" class="btn btn-accent btn-lg">Become a Partner</a>
+            </div>
+            
+            <div class="audience-cards">
+                <div class="audience-card">
+                    <h3 class="audience-title">Current YusiBooks Accounting Partners</h3>
+                    <p class="audience-description">
+                        Start using the free Accountant Hub to create client accounts so you can manage clients centrally and tailor individual workflows.
+                    </p>
+                </div>
+                
+                <div class="audience-card secondary">
+                    <h3 class="audience-title">Accountants, bookkeepers, and tax professionals</h3>
+                    <p class="audience-description">
+                        If you use—or plan to use—the YusiBooks platform with your clients, the Accountant Hub starts you out right with one-click account access, account setup, and multiple billing options.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What makes the Accountant Hub so great Section -->
+    <section class="great-section">
+        <div class="container position-relative" style="z-index: 2;">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="category-title white">What makes the Accountant Hub so great?</h2>
+                    
+                    <ul class="features-list">
+                        <li>Easy, centralized access and optimized workflows</li>
+                        <li>Easy, free client account setup</li>
+                        <li>Multiple billing options—pay for your client's YusiBooks subscription on their behalf or have your client pay for their account directly</li>
+                        <li>Dedicated, accountant-centric support from real humans for YusiBooks-Certified Accounting Partners</li>
+                        <li>Discounts for YusiBooks-Certified Accounting Partners</li>
+                    </ul>
+                    
+                    <p class="lead mb-4">
+                        We're just getting started, and new developments are coming!
+                    </p>
+                    
+                    <a href="#signup" class="btn btn-accent btn-lg">
+                        <i class="fas fa-user-plus me-2"></i>
+                        Become a Partner
+                    </a>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="person-image">
+                        <div class="person-placeholder">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h5 class="mb-3">Professional Accountant</h5>
+                        <p class="opacity-90">
+                            "YusiBooks Accountant Hub has transformed how I manage my clients. Everything I need is in one place, and my clients love the streamlined experience."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+     <!-- Footer -->
+    <footer class="footer py-5 text-white">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                       
+                        <span class="fw-bold fs-4">YusiBooks</span>
+                    </div>
+                    <p class="text-white-50 mb-4">Streamlined accounting solutions for modern businesses. Manage your finances with confidence.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-facebook fs-5"></i></a>
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-twitter fs-5"></i></a>
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-linkedin fs-5"></i></a>
+                        <a href="#" class="text-white-50 hover-primary"><i class="fa-brands fa-instagram fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Product</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Features</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Pricing</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Security</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Solutions</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Small Business</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Freelancers</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Accountants</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Enterprise</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Help Center</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Contact Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Live Chat</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Training</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Press</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-white-50 mb-0 small">&copy; 2025 YusiBooks. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex flex-column flex-md-row gap-3 justify-content-md-end">
+                        <a href="#" class="text-white-50 text-decoration-none small">Privacy Policy</a>
+                        <a href="#" class="text-white-50 text-decoration-none small">Terms of Service</a>
+                        <a href="#" class="text-white-50 text-decoration-none small">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.feature-item, .audience-card, .dashboard-mockup').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
