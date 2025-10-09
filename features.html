@@ -23,7 +23,7 @@
             --primary-dark: #074a4a;
             --accent-color: #c3231e;
             --success-color: #0c8c36;
-            --text-dark: #212529;
+            --text-dark: #000;
             --text-muted: #6c757d;
             --border-radius-sm: 0.5rem;
             --border-radius-md: 1rem;
@@ -41,23 +41,37 @@
             box-sizing: border-box;
         }
 
+
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             line-height: 1.6;
             font-weight: 400;
         }
-
-        /* Enhanced Button Styles */
+        .hero_title1{
+        position: relative;
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 2rem;
+        font-family: 'proxima-nova', sans-serif !important;
+       
+            color: white;
+        
+           
+      
+          margin-bottom: 30px;
+        }
+      
+   /* Enhanced Button Styles */
         .btn {
-            font-weight: 600;
-            border-radius: 12px;
+             font-weight: 500;
+            font-size: 13px;
+            margin-top: 5px;
+            border-radius: var(--border-radius-md);
             transition: var(--transition-smooth);
             border: none;
             position: relative;
             overflow: hidden;
-            text-transform: none;
-            letter-spacing: 0.5px;
         }
         .btn-accent {
             --bs-btn-bg: var(--accent-color);
@@ -125,18 +139,29 @@
             width: 150px;
             transition: var(--transition-fast);
         }
-
-        .container .logo img:hover {
-            transform: scale(1.05);
-        }
+        /* Enhanced Navigation */
         .navbar {
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.95) !important;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
+         .nav-btn a{
+            margin-bottom: 5px;
+        } 
+
+         .list-unstyled li{
+            font-size: 14px;
+            font-weight: 500;
+
+        } 
+        .list-unstyled li i{
+            font-size: 12px;
+        }
+
 
         .nav-link {
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 15px;
             transition: var(--transition-fast);
             position: relative;
         }
@@ -162,6 +187,51 @@
             color: var(--primary-color) !important;
         }
 
+        /* Enhanced Modal */
+        .modal-content {
+            border: none;
+            box-shadow: var(--shadow-xl);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)) !important;
+        }
+.offcanvas-body{
+    background-color: white;
+    padding-top: 30px;
+    padding-bottom: 100px;
+    overflow-y:inherit;
+}
+        /* Utility Classes */
+        .rounded-3 { border-radius: var(--border-radius-md) !important; }
+        .rounded-4 { border-radius: var(--border-radius-lg) !important; }
+        .rounded-5 { border-radius: var(--border-radius-xl) !important; }
+
+        .text-card-link {
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        .text-link-your-way {
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        .top-p {
+            color: white; 
+        }
+        .hero_title2 {
+            color: var(--accent-color);
+        }
+    
+        .list_icon i {
+            color: white;
+        }
+        
+        .feature_card_title {
+            color: var(--accent-color); 
+        }
 
 
         /* Feature Card Styles*/
@@ -186,11 +256,6 @@
             width: 100%;
             height: 6px;
             background: linear-gradient(135deg, #00c9a7, #0d7878, #c3231e);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
         }
 
         /* Colorful Feature Icons with Animation */
@@ -221,15 +286,7 @@
             transform: translateX(-100%) translateY(-100%) rotate(45deg);
         }
 
-        .feature-card:hover .feature-icon::after {
-            transform: translateX(100%) translateY(100%) rotate(45deg);
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(8deg);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
+       
         /* Dynamic Icon Colors - YusiBooks Theme */
         .icon-blue { background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); }
         .icon-green { background: linear-gradient(135deg, var(--success-color), #0a5d2c); }
@@ -245,16 +302,16 @@
         .icon-violet { background: linear-gradient(135deg, var(--primary-color), #4c1d95); }
 
         .feature-title {
-            color: #1f2937;
-            font-weight: 700;
+            color: #000000;
+            font-weight: 600;
             margin-bottom: 1.2rem;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             line-height: 1.3;
         }
 
         .feature-description {
-            color: #64748b;
-            font-size: 1.05rem;
+            font-size: 15px;
+            color: #000000;
             line-height: 1.7;
             margin-bottom: 1.8rem;
         }
@@ -292,38 +349,28 @@
 
         /* Category Title Styling */
         .category-title {
-            color: #1f2937;
-            font-weight: 700;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+           color: #000;
+            font-size: 28px;
+            font-weight: 600;
             text-align: center;
-            position: relative;
+          line-height: 1.1rem;
+          margin-bottom: 30px;
         }
 
-        .category-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            border-radius: 2px;
-        }
+      
 
-        /* Hero Section - YusiBooks Style */
-        .features-hero {
+       /* Hero Section */
+        .hero {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
             position: relative;
             overflow: hidden;
-            min-height: 100vh;
+            min-height: 60vh;
             display: flex;
             align-items: center;
         }
 
-        .features-hero::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -348,7 +395,7 @@
         .floating-shape {
             position: absolute;
             opacity: 0.1;
-            animation: float 8s ease-in-out infinite;
+           
         }
 
         .floating-shape:nth-child(1) {
@@ -373,10 +420,49 @@
             0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
             50% { transform: translateY(-30px) rotate(180deg); opacity: 0.2; }
         }
-        .text-green{
-        color: #0d7878;
-    }
 
+        /* Mock Interface */
+        .hero-interface {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interface-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .interface-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f57; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #28ca42; }
+
+        .interface-content {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 1.5rem;
+            color: #333;
+        }
+         .text-h3{
+            color: #000;
+            font-size: 28px;
+            font-weight: 600;
+          line-height: 1.1rem;
+          margin-top: -30px;
+          margin-bottom: 50px;
+        }
        
  .footer {
             background-color:#1e1f1f;
@@ -434,10 +520,7 @@
 
         /* Responsive Enhancements */
         @media (max-width: 768px) {
-            .features-hero {
-                min-height: 70vh;
-            }
-            
+          
             .category-title {
                 font-size: 2rem;
             }
@@ -457,12 +540,12 @@
 </head>
 <body>
    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top py-3">
+        <nav class="navbar navbar-expand-lg navbar-light sticky-top py-3">
         <div class="container">
             <div class="logo">
                 <a href="#" class="text-decoration-none">
                     <div class="d-flex align-items-center">
-                    <a href="index.html"><img src="assets/yusi_books_logo.jpg" alt=""></a>
+                    <a href="index.html"><img src="assets/yusi_books_logo.jpg" alt="yusibooks_logo_here"></a>
                  </div>
                 </a>
             </div>     
@@ -472,13 +555,13 @@
             
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Menu</h5>
+                    <h5 class="offcanvas-title fw-normal" id="offcanvasNavbarLabel">Menu</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active text-dark px-3" aria-current="page" href="features.html">Features</a>
+                            <a class="nav-link text-dark px-3" aria-current="page" href="features.html">Features</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark px-3" href="small_business.html">Small Businesses</a>
@@ -486,7 +569,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark px-3" href="accounts.html">Accountants</a>
                         </li>
-                        <!-- <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a class="nav-link text-dark px-3" href="#">Resources</a>
                         </li>-->
                         <li class="nav-item">
@@ -496,88 +579,51 @@
                             <a class="nav-link text-dark px-3" href="contact_us.html">Contact Us</a>
                         </li>
                     </ul>
-                    <div class="d-flex flex-column flex-lg-row align-items-center gap-3 mt-3 mt-lg-0">
-                        <a href="#" class="nav-link text-green fw-semibold me-lg-3">Login</a>
-                        <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Buy Now & Save</a>
+                    <div class="nav-btn d-flex flex-column flex-lg-row align-items-left gap-3 mt-3 mt-lg-0">
+                       <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Buy Now & Save</a>
                         <a href="#" class="btn btn-accent rounded-pill px-4">Try Free</a>
+                        <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Login</a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="features-hero py-5">
-        <div class="hero-floating-elements">
-            <div class="floating-shape">
-                <i class="fas fa-chart-line" style="font-size: 4rem; color: rgba(255,255,255,0.1);"></i>
-            </div>
-            <div class="floating-shape">
-                <i class="fas fa-users" style="font-size: 3rem; color: rgba(255,255,255,0.1);"></i>
-            </div>
-            <div class="floating-shape">
-                <i class="fas fa-dollar-sign" style="font-size: 3.5rem; color: rgba(255,255,255,0.1);"></i>
-            </div>
+     <!-- Hero Section -->
+<section class="hero">        
+  <div class="container position-relative mt-4" style="z-index: 2;">
+  <div class="row align-items-center">
+      
+      <!-- Left Column (Text) -->
+      <div class="col-12 col-md-6 mb-4 mb-md-0">
+        <div class="hero-content text-center text-md-start">
+          <h1 class="hero_title1 display-4 text-lg-start1">
+            Powerful Features for<br>
+            <span style="color: white">Modern Businesses</span>
+          </h1>
+          <p class="mb-5 opacity-90">
+            Discover comprehensive business management tools designed to streamline your operations, enhance productivity, and drive growth. From financial management to team collaboration, YusiBooks has everything you need.
+          </p>
         </div>
-        <div class="container py-5 position-relative" style="z-index: 2;">
-            <div class="row align-items-center">
-                <div class="col-lg-10 mx-auto text-center">
-                    <div class="mb-4">
-                        <span class="badge bg-light text-primary px-4 py-2 rounded-pill fw-semibold fs-6">
-                            ✨ Everything you need to run your business
-                        </span>
-                    </div>
-                    <h1 class="display-2 hero-title mb-4 fw-bold">
-                        Powerful Features for<br>
-                        <span style="color: white">Modern Businesses</span>
-                    </h1>
-                    <p class="lead mb-5 fs-4 opacity-90">
-                        Discover comprehensive business management tools designed to streamline your operations, 
-                        enhance productivity, and drive growth. From financial management to team collaboration, 
-                        YusiBooks has everything you need.
-                    </p>
-                    <div class="d-flex justify-content-center gap-4 flex-wrap mb-5">
-                        <a href="#financial" class="btn btn-light btn-lg px-5 py-3 rounded-pill shadow">
-                            <i class="fas fa-dollar-sign me-2" style="color: var(--success-color);"></i>Financial Tools
-                        </a>
-                        <a href="#client" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">
-                            <i class="fas fa-users me-2"></i>Client Management
-                        </a>
-                        <a href="#team" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">
-                            <i class="fas fa-project-diagram me-2"></i>Team & Projects
-                        </a>
-                    </div>
-                    
-                </div>
-            </div>
+      </div>
+
+      <!-- Right Column (Image) -->
+      <div class="col-12 col-md-6">
+        <div class="hero-interface text-center">
+          <img src="assets/features.jpg" alt="Dashboard Mockup" class="img-fluid rounded">
         </div>
-    </section>
+      </div>
+
+    </div>
+  </div>
+</section>
 
     <!-- Financial Management Section -->
     <section id="financial" class="py-5 section-financial">
         <div class="container py-5">
-            <h2 class="category-title">Financial Management</h2>
+            <h3 class="text-h3 text-center text-dark">Financial Management</h3>
             <div class="row g-5">
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon icon-blue">
-                            <i class="fas fa-file-invoice-dollar"></i>
-                        </div>
-                        <h5 class="feature-title">Bill & Get Paid</h5>
-                        <p class="feature-description">Streamline your billing process with automated invoicing, payment tracking, and smart reminders. Get paid faster with integrated payment gateways and multiple payment options.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon icon-green">
-                            <i class="fas fa-calculator"></i>
-                        </div>
-                        <h5 class="feature-title">Accounting & Taxes</h5>
-                        <p class="feature-description">Comprehensive accounting tools with automated tax calculations, compliance tracking, and seamless integration with tax filing services for stress-free tax season.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
+             
                 <div class="col-lg-4 col-md-6">
                     <div class="feature-card">
                         <div class="feature-icon icon-purple">
@@ -585,7 +631,7 @@
                         </div>
                         <h5 class="feature-title">Invoicing</h5>
                         <p class="feature-description">Create professional invoices with customizable templates, automatic calculations, and seamless delivery. Track payment status in real-time with automated follow-ups.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
+                      
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -595,7 +641,7 @@
                         </div>
                         <h5 class="feature-title">Accounting</h5>
                         <p class="feature-description">Advanced accounting features with real-time financial insights, automated bookkeeping, and comprehensive reporting tools for better business decisions.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
+                        
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -605,7 +651,7 @@
                         </div>
                         <h5 class="feature-title">Payments</h5>
                         <p class="feature-description">Secure payment processing with multiple gateway integrations, recurring billing, instant notifications, and automated payment reminders for faster collection.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
+                
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -615,7 +661,7 @@
                         </div>
                         <h5 class="feature-title">Expenses</h5>
                         <p class="feature-description">Track and categorize business expenses with receipt scanning, automatic categorization, and detailed reporting for better financial control and tax preparation.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
+                    
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -625,17 +671,7 @@
                         </div>
                         <h5 class="feature-title">Time Tracking</h5>
                         <p class="feature-description">Accurate time tracking with project-based logging, automatic invoicing from tracked hours, and productivity insights to optimize your workflow efficiency.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon icon-pink">
-                            <i class="fas fa-camera"></i>
-                        </div>
-                        <h5 class="feature-title">Receipts</h5>
-                        <p class="feature-description">Digital receipt management with OCR scanning, automatic expense categorization, and seamless integration with your accounting workflow for easy tax filing.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
+                     
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -645,61 +681,13 @@
                         </div>
                         <h5 class="feature-title">Payroll</h5>
                         <p class="feature-description">Automated payroll processing with tax calculations, direct deposit, benefits management, and compliance with federal and state regulations.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
+                      
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Client Relations Section -->
-    <section id="client" class="py-5 section-client">
-        <div class="container py-5">
-            <h2 class="category-title">Client Relations</h2>
-            <div class="row g-5">
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon icon-cyan">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <h5 class="feature-title">Client Communication</h5>
-                        <p class="feature-description">Centralized communication hub with messaging, email integration, and automated follow-ups to maintain strong client relationships and project transparency.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon icon-emerald">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h5 class="feature-title">Clients</h5>
-                        <p class="feature-description">Complete client management system with contact information, project history, billing details, and personalized client portals for enhanced transparency.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon icon-violet">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h5 class="feature-title">Proposals</h5>
-                        <p class="feature-description">Create compelling project proposals with customizable templates, electronic signatures, and approval tracking workflows to win more business.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon icon-blue">
-                            <i class="fas fa-clipboard-list"></i>
-                        </div>
-                        <h5 class="feature-title">Estimates</h5>
-                        <p class="feature-description">Generate accurate project estimates with itemized pricing, labor costs, and materials. Convert estimates to invoices seamlessly when approved.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Team & Project Management Section -->
     <section id="team" class="py-5 section-team">
@@ -713,7 +701,7 @@
                         </div>
                         <h5 class="feature-title">Enable Your Team</h5>
                         <p class="feature-description">Empower your team with role-based access, collaborative workflows, and real-time project updates. Keep everyone aligned and productive.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
+                        
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -723,7 +711,7 @@
                         </div>
                         <h5 class="feature-title">Projects</h5>
                         <p class="feature-description">Comprehensive project management with task tracking, milestone planning, budget monitoring, and team collaboration tools for successful project delivery.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
+                    
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -733,71 +721,14 @@
                         </div>
                         <h5 class="feature-title">Team Management</h5>
                         <p class="feature-description">Manage team members with user roles, permissions, workload distribution, and performance tracking to optimize team productivity and collaboration.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
+                      
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon icon-teal">
-                            <i class="fas fa-route"></i>
-                        </div>
-                        <h5 class="feature-title">Mileage Tracking App</h5>
-                        <p class="feature-description">Automatic mileage tracking for business trips with GPS integration, expense categorization, and IRS-compliant reporting for tax deductions.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon icon-red">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <h5 class="feature-title">Bookkeeping</h5>
-                        <p class="feature-description">Professional bookkeeping services with automated transaction categorization, monthly reconciliation, and financial statement preparation.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>
 
-    <!-- Analytics & Apps Section -->
-    <section id="analytics" class="py-5 section-analytics">
-        <div class="container py-5">
-            <h2 class="category-title">Analytics & Apps</h2>
-            <div class="row g-5">
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon icon-yellow">
-                            <i class="fas fa-chart-bar"></i>
-                        </div>
-                        <h5 class="feature-title">Reports</h5>
-                        <p class="feature-description">Comprehensive financial reporting with customizable dashboards, profit & loss statements, cash flow analysis, and real-time business analytics.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon icon-pink">
-                            <i class="fas fa-store"></i>
-                        </div>
-                        <h5 class="feature-title">Business Apps AppStore</h5>
-                        <p class="feature-description">Extend functionality with our comprehensive app marketplace featuring integrations, automation tools, and specialized business solutions.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
-                        <div class="feature-icon icon-indigo">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h5 class="feature-title">iOS & Android Apps</h5>
-                        <p class="feature-description">Full-featured mobile apps for iOS and Android with offline capability, receipt scanning, time tracking, and complete business management on the go.</p>
-                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
    <!-- Footer -->
     <footer class="footer py-5 text-white">

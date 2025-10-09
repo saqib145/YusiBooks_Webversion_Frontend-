@@ -57,15 +57,18 @@
 
         /* Enhanced Button Styles */
         .btn {
-            font-weight: 600;
-            border-radius: 12px;
+           font-weight: 500;
+            font-size: 13px;
+            margin-top: 5px;
+            border-radius: var(--border-radius-md);
             transition: var(--transition-smooth);
             border: none;
             position: relative;
             overflow: hidden;
-            text-transform: none;
-            letter-spacing: 0.5px;
         }
+        .nav-btn a{
+            margin-bottom: 5px;
+        } 
 
         .btn-accent {
             --bs-btn-bg: var(--accent-color);
@@ -134,20 +137,17 @@
             transition: var(--transition-fast);
         }
 
-        .container .logo img:hover {
-            transform: scale(1.05);
-        }
+        
 
-
-        /* Enhanced Navigation */
-        .navbar {
+       .navbar {
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.95) !important;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .nav-link {
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 15px;
             transition: var(--transition-fast);
             position: relative;
         }
@@ -172,28 +172,36 @@
             font-weight: 600;
             color: var(--primary-color) !important;
         }
-        
-        /* Enhanced Logo Styles */
-        .navbar-brand .logo-y {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: #fff;
-            padding: 0.4rem 0.6rem;
-            border-radius: var(--border-radius-sm);
-            font-size: 1.25rem;
-            font-weight: 700;
-            box-shadow: var(--shadow-sm);
+
+        /* Enhanced Modal */
+        .modal-content {
+            border: none;
+            box-shadow: var(--shadow-xl);
+            backdrop-filter: blur(10px);
         }
 
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)) !important;
+        }
+.offcanvas-body{
+    background-color: white;
+    padding-top: 30px;
+    padding-bottom: 100px;
+    overflow-y:inherit;
+}
+
         /* Hero Section */
-        .contact-hero {
+        .hero {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
             position: relative;
             overflow: hidden;
-            padding: 15rem 0 10rem;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
         }
 
-        .contact-hero::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -201,15 +209,93 @@
             right: 0;
             bottom: 0;
             background: radial-gradient(circle at 20% 80%, rgba(120, 219, 226, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(255, 194, 153, 0.15) 0%, transparent 50%);
-            pointer-events: none;
+                        radial-gradient(circle at 80% 20%, rgba(255, 194, 153, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.08) 0%, transparent 50%);
+        }
+        .hero_title1 {
+    position: relative;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 2rem;
+    font-family: 'proxima-nova', sans-serif !important;
+    color: white;
+    margin-bottom: 30px;
+}
+
+        .hero-floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 1;
         }
 
-        .contact-hero .container {
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+           
+        }
+
+        .floating-shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        .floating-shape:nth-child(3) {
+            top: 80%;
+            left: 30%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+            50% { transform: translateY(-30px) rotate(180deg); opacity: 0.2; }
+        }
+
+        /* Mock Interface */
+        .hero-interface {
+            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
-            z-index: 2;
+            overflow: hidden;
         }
 
+        .interface-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .interface-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f57; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #28ca42; }
+
+        .interface-content {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 1.5rem;
+            color: #333;
+        }
         /* Contact Cards */
         .contact-section {
             padding: 4rem 0;
@@ -391,7 +477,7 @@
             line-height: 1.7;
         }
 
-        /* Chatbot Bubble */
+        /* Enhanced Chatbot */
         .chatbot-bubble {
             position: fixed;
             bottom: 1.5rem;
@@ -429,7 +515,7 @@
             padding: 4rem 0;
         }
 
-        .map-container {
+        .contact-us-bg {
             background: #f8fafc;
             border-radius: 20px;
             overflow: hidden;
@@ -456,6 +542,14 @@
                 padding: 4rem 0 2rem;
             }
             
+
+            .chatbot-bubble {
+                width: 3.5rem;
+                height: 3.5rem;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+            
             .contact-section,
             .contact-form-section,
             .faq-section {
@@ -470,13 +564,12 @@
 </head>
 <body>
     <!-- Navigation -->
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top py-3">
+         <nav class="navbar navbar-expand-lg navbar-light sticky-top py-3">
         <div class="container">
             <div class="logo">
                 <a href="#" class="text-decoration-none">
                     <div class="d-flex align-items-center">
-                    <a href="index.html"><img src="assets/yusi_books_logo.jpg" alt=""></a>
+                    <a href="index.html"><img src="assets/yusi_books_logo.jpg" alt="yusibooks_logo_here"></a>
                  </div>
                 </a>
             </div>     
@@ -486,7 +579,7 @@
             
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Menu</h5>
+                    <h5 class="offcanvas-title fw-normal" id="offcanvasNavbarLabel">Menu</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -510,25 +603,47 @@
                             <a class="nav-link text-dark px-3" href="contact_us.html">Contact Us</a>
                         </li>
                     </ul>
-                    <div class="d-flex flex-column flex-lg-row align-items-center gap-3 mt-3 mt-lg-0">
-                        <a href="#" class="nav-link text-green fw-semibold me-lg-3">Login</a>
-                        <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Buy Now & Save</a>
+                    <div class="nav-btn d-flex flex-column flex-lg-row align-items-left gap-3 mt-3 mt-lg-0">
+                       <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Buy Now & Save</a>
                         <a href="#" class="btn btn-accent rounded-pill px-4">Try Free</a>
+                        <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Login</a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="contact-hero">
-        <div class="container text-center">
-            <h1 class="display-4 fw-bold mb-4">Get in Touch</h1>
-            <p class="lead mb-4">Ready to transform your business accounting?<br>Our team is here to help you get started and succeed with YusiBooks.</p>
+ <!-- Hero Section -->
+    
+ <section class="hero py-5">
+  <div class="container position-relative" style="z-index: 2;">
+    <div class="row align-items-center flex-column flex-md-row text-center text-md-start">
+      
+      <!-- Left Column (Text) -->
+      <div class="col-12 col-md-6 mb-4 mb-md-0">
+        <div class="hero-content">
+          <h1 class="hero_title1 display-6 mb-4 lh-1">
+            Get in Touch
+          </h1>
+          <p class="mb-4 opacity-90">
+            Ready to transform your business accounting?  
+            Our team is here to help you get started and succeed with YusiBooks.
+          </p>
         </div>
-    </section>
+      </div>
 
-    <!-- Contact Options -->
+      <!-- Right Column (Image) -->
+      <div class="col-12 col-md-6">
+        <div class="hero-interface text-center">
+          <img src="assets/get_in_touch.jpg" alt="Dashboard Mockup" class="img-fluid rounded shadow-sm">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+   <!-- Contact Options -->
     <section class="contact-section">
         <div class="container">
             <div class="row g-4">
@@ -544,10 +659,10 @@
                             <i class="fas fa-envelope me-2"></i>sales@yusibooks.com
                         </a>
                         <a href="tel:+1-800-YUSI-BKS" class="contact-info">
-                            <i class="fas fa-phone me-2"></i>1-800-YUSI-BKS
+                            
                         </a>
                         <div class="mt-3">
-                            <button class="btn btn-accent">Schedule a Call</button>
+                            
                         </div>
                     </div>
                 </div>
@@ -563,11 +678,8 @@
                         <a href="mailto:support@yusibooks.com" class="contact-info">
                             <i class="fas fa-envelope me-2"></i>support@yusibooks.com
                         </a>
-                        <a href="#" class="contact-info">
-                            <i class="fas fa-comments me-2"></i>Live Chat Available
-                        </a>
                         <div class="mt-3">
-                            <button class="btn btn-primary">Get Support</button>
+                           
                         </div>
                     </div>
                 </div>
@@ -583,11 +695,8 @@
                         <a href="mailto:demo@yusibooks.com" class="contact-info">
                             <i class="fas fa-envelope me-2"></i>demo@yusibooks.com
                         </a>
-                        <a href="#" class="contact-info">
-                            <i class="fas fa-calendar me-2"></i>Book Online
-                        </a>
                         <div class="mt-3">
-                            <button class="btn btn-outline-primary">Book Demo</button>
+                           
                         </div>
                     </div>
                 </div>
@@ -721,7 +830,7 @@
                             </h2>
                             <div id="faqAnswer4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    Absolutely! We offer a 14-day free trial for all our plans with no credit card required. You'll have full access to all features during your trial period. You can also schedule a personalized demo with our team to see how YusiBooks can specifically benefit your business.
+                                    Absolutely! We offer a 90-day free trial for all our plans with no credit card required. You'll have full access to all features during your trial period. You can also schedule a personalized demo with our team to see how YusiBooks can specifically benefit your business.
                                 </div>
                             </div>
                         </div>
@@ -745,61 +854,92 @@
     </section>
 
     <!-- Office Location -->
-    <section class="map-section">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold mb-3">Visit Our Office</h2>
-                <p class="text-muted">We'd love to meet you in person. Drop by our headquarters or schedule an appointment.</p>
+    <section class="map-section py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <!-- Optional heading can be added here -->
+    </div>
+
+    <div class="row align-items-center text-center text-lg-start">
+      
+      <!-- Left Column (Image) -->
+      <div class="col-12 col-lg-8 mb-4 mb-lg-0">
+        <div class="contact-us-bg">
+          <img src="assets/contact-us.jpg" 
+               alt="Contact Us Background" 
+               class="img-fluid rounded shadow-sm">
+        </div>
+      </div>
+
+      <!-- Right Column (Contact Info) -->
+      <div class="col-12 col-lg-4">
+        <div class="ps-0 ps-lg-4 mt-3 mt-lg-0">
+          <h4 class="fw-bold mb-4">Contact Us</h4>
+
+          <div class="d-flex flex-column align-items-center align-items-lg-start gap-3">
+
+            <div class="d-flex align-items-start text-start">
+              <i class="fas fa-map-marker-alt me-3 mt-1" style="color: var(--primary-color); font-size: 1.2rem;"></i>
+              <div>
+                <strong>Corporate Address:</strong><br>
+                Yusi Technologies, Inc.<br>
+                17875 Von Karman Ave<br>
+                Irvine, CA-92614
+              </div>
             </div>
-            
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <div class="map-container">
-                        <div class="map-placeholder">
-                            <i class="fas fa-map-marker-alt fa-3x mb-3" style="color: var(--primary-color);"></i>
-                            <h4>YusiBooks Headquarters</h4>
-                            <p class="mb-0">Interactive map integration would go here</p>
+
+            <div class="d-flex align-items-start text-start">
+          
+             
+            </div>
+
+            <div class="d-flex align-items-start text-start">
+             
+             
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <!-- Chatbot Bubble -->
+    <div class="chatbot-bubble" data-bs-toggle="modal" data-bs-target="#chatbotModal">
+        <i class="fa-solid fa-comment-dots"></i>
+    </div>
+
+    <!-- Chatbot Modal -->
+    <div class="modal fade" id="chatbotModal" tabindex="-1" aria-labelledby="chatbotModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4">
+                <div class="modal-header bg-primary text-white rounded-top-4">
+                    <h5 class="modal-title d-flex align-items-center" id="chatbotModalLabel">
+                        YusiBooks
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="bg-primary text-white p-2 rounded-circle flex-shrink-0">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="ms-3">
+                            <p class="fw-semibold text-primary">Hey there! I'm Addy, your friendly AI Rep from YusiBooks.</p>
+                            <p class="text-secondary-emphasis mt-1">Saw that you're interested in invoice and accounting software. I'm available if you have questions!</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ps-lg-4 mt-4 mt-lg-0">
-                        <h4 class="fw-bold mb-4">Headquarters</h4>
-                        <div class="d-flex align-items-start mb-3">
-                            <i class="fas fa-map-marker-alt me-3 mt-1" style="color: var(--primary-color);"></i>
-                            <div>
-                                <strong>Address</strong><br>
-                                123 Business District<br>
-                                Suite 400<br>
-                                San Francisco, CA 94105
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-start mb-3">
-                            <i class="fas fa-clock me-3 mt-1" style="color: var(--primary-color);"></i>
-                            <div>
-                                <strong>Office Hours</strong><br>
-                                Monday - Friday: 9:00 AM - 6:00 PM<br>
-                                Saturday: 10:00 AM - 2:00 PM<br>
-                                Sunday: Closed
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-start">
-                            <i class="fas fa-parking me-3 mt-1" style="color: var(--primary-color);"></i>
-                            <div>
-                                <strong>Parking</strong><br>
-                                Validated parking available<br>
-                                in adjacent parking garage
-                            </div>
-                        </div>
+                    <div class="d-flex mt-3">
+                        <input type="text" class="form-control rounded-pill me-2" placeholder="Type your message...">
+                        <button class="btn btn-primary rounded-pill">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Chatbot Bubble -->
-    <div class="chatbot-bubble" title="Chat with us">
-        <i class="fas fa-comments"></i>
     </div>
 
      <!-- Footer -->
@@ -919,11 +1059,26 @@
             }, 2000);
         });
 
-        // Chatbot bubble interaction
-        document.querySelector('.chatbot-bubble').addEventListener('click', function() {
-            alert('Live chat would open here! Connect with our support team for instant help.');
+      // Enhanced chatbot interaction
+        document.querySelector('.chatbot-bubble').addEventListener('mouseenter', function() {
+            this.style.animationPlayState = 'paused';
         });
 
+        document.querySelector('.chatbot-bubble').addEventListener('mouseleave', function() {
+            this.style.animationPlayState = 'running';
+        });
+
+        // Form interaction enhancements
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.transition = 'transform 0.2s ease';
+            });
+
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

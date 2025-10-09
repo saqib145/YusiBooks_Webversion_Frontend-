@@ -57,16 +57,18 @@
 
         /* Enhanced Button Styles */
         .btn {
-            font-weight: 600;
-            border-radius: 12px;
+           font-weight: 500;
+            font-size: 13px;
+            margin-top: 5px;
+            border-radius: var(--border-radius-md);
             transition: var(--transition-smooth);
             border: none;
             position: relative;
             overflow: hidden;
-            text-transform: none;
-            letter-spacing: 0.5px;
         }
-
+        .nav-btn a{
+            margin-bottom: 5px;
+        } 
         .btn-accent {
             --bs-btn-bg: var(--accent-color);
             --bs-btn-border-color: var(--accent-color);
@@ -106,9 +108,9 @@
         }
 
         .btn-outline-primary {
-            border: 2px solid var(--primary-color);
+            background-color: rgb(42, 71, 236);
             color: var(--primary-color);
-            background: transparent;
+            color: white;
         }
 
         .btn-outline-primary:hover {
@@ -133,19 +135,17 @@
             transition: var(--transition-fast);
         }
 
-        .container .logo img:hover {
-            transform: scale(1.05);
-        }
-
         /* Enhanced Navigation */
-        .navbar {
+         .navbar {
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.95) !important;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
+     
 
         .nav-link {
-            font-weight: 500;
+           font-weight: 600;
+            font-size: 15px;
             transition: var(--transition-fast);
             position: relative;
         }
@@ -170,7 +170,33 @@
             font-weight: 600;
             color: var(--primary-color) !important;
         }
+              .navbar-brand .logo-y {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: #fff;
+            padding: 0.4rem 0.6rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 1.25rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-sm);
+        }
+        .offcanvas-body{
+        background-color: white;
+        padding-top: 30px;
+        padding-bottom: 100px;
+        overflow-y:inherit;
+}
 
+        .container .logo img {
+        width: 150px;
+        transition: var(--transition-fast);
+}
+       
+.offcanvas-body{
+    background-color: white;
+    padding-top: 30px;
+    padding-bottom: 100px;
+    overflow-y:inherit;
+}
 
        
         /* Hero Section */
@@ -193,6 +219,23 @@
                         radial-gradient(circle at 80% 20%, rgba(255, 194, 153, 0.15) 0%, transparent 50%);
             pointer-events: none;
         }
+        .hero_title1 {
+    position: relative;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 2rem;
+    font-family: 'proxima-nova', sans-serif !important;
+    color: white;
+    margin-bottom: 30px;
+}
+.category-title {
+    color: #000;
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.1rem;
+    margin-bottom: 30px;
+}
 
         .pricing-hero .container {
             position: relative;
@@ -287,7 +330,7 @@
 
         .popular-badge {
             position: absolute;
-            top: -1rem;
+            top: -10px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--accent-color);
@@ -410,7 +453,7 @@
             font-size: 1.2rem;
         }
 
-        /* Chatbot Bubble */
+        /* Enhanced Chatbot */
         .chatbot-bubble {
             position: fixed;
             bottom: 1.5rem;
@@ -512,10 +555,10 @@
                             <a class="nav-link text-dark px-3" href="contact_us.html">Contact Us</a>
                         </li>
                     </ul>
-                    <div class="d-flex flex-column flex-lg-row align-items-center gap-3 mt-3 mt-lg-0">
-                        <a href="#" class="nav-link text-green fw-semibold me-lg-3">Login</a>
-                        <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Buy Now & Save</a>
+                    <div class="nav-btn d-flex flex-column flex-lg-row align-items-left gap-3 mt-3 mt-lg-0">
+                       <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Buy Now & Save</a>
                         <a href="#" class="btn btn-accent rounded-pill px-4">Try Free</a>
+                        <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Login</a>
                     </div>
                 </div>
             </div>
@@ -526,8 +569,8 @@
     <!-- Hero Section -->
     <section class="pricing-hero">
         <div class="container text-center">
-            <h1 class="display-4 fw-bold mb-4">Choose Your Perfect Plan</h1>
-            <p class="lead mb-4">Powerful accounting software that grows with your business.<br>Start your free trial today and experience the YusiBooks difference.</p>
+            <h1 class="hero_title1 display-6 mb-4">Choose Your Perfect Plan</h1>
+            <p class="mb-5 opacity-90">Powerful accounting software that grows with your business.<br>Start your free trial today and experience the YusiBooks difference.</p>
             
             <!-- Billing Toggle -->
             <div class="billing-toggle">
@@ -536,7 +579,7 @@
                 </button>
                 <button class="toggle-option" data-billing="yearly">
                     Yearly
-                    <span class="discount-badge">Save 20%</span>
+                    <span class="discount-badge">Save 30%</span>
                 </button>
             </div>
         </div>
@@ -547,213 +590,100 @@
         <div class="container">
             <div class="row g-4">
                 <!-- Starter Plan -->
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="pricing-card h-100">
                         <h3 class="plan-name">Starter</h3>
                         <div class="plan-price">
-                            <span class="currency">$</span><span class="price-amount" data-monthly="8.95" data-yearly="12">8.95</span>
+                            <span class="currency">$</span><span class="price-amount" data-monthly="8.95" data-yearly="75.18">8.95</span>
                             <span class="period">/month</span>
                         </div>
                         <div class="plan-original-price yearly-price" style="display: none;">
-                            Was $18/month
+                            Was $107.4/year
                         </div>
                         <p class="plan-description">Perfect for freelancers and small startups</p>
                         
                         <ul class="feature-list">
-                            <li><i class="fas fa-check"></i> Up to 5 clients</li>
+                            <li><i class="fas fa-check"></i> Up to 10 clients</li>
+                            <li><i class="fas fa-check"></i> 1 User</li>
                             <li><i class="fas fa-check"></i> Unlimited invoices</li>
                             <li><i class="fas fa-check"></i> Basic expense tracking</li>
                             <li><i class="fas fa-check"></i> Financial reports</li>
                             <li><i class="fas fa-check"></i> Email support</li>
-                            <li><i class="fas fa-check"></i> Mobile app access</li>
+                           
                         </ul>
                         
+                        
                         <button class="btn btn-outline-primary w-100 mb-2">Start Free Trial</button>
-                        <small class="text-muted d-block text-center">No credit card required</small>
+                        <small class="text-muted d-block text-center">90-day free trial</small>
                     </div>
                 </div>
 
                 <!-- Professional Plan (Popular) -->
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="pricing-card h-100 popular">
                         <div class="popular-badge">
                             <i class="fas fa-star me-1"></i> Most Popular
                         </div>
                         <h3 class="plan-name">Professional</h3>
                         <div class="plan-price">
-                            <span class="currency">$</span><span class="price-amount" data-monthly="19.95" data-yearly="28">19.95</span>
+                            <span class="currency">$</span><span class="price-amount" data-monthly="14.95" data-yearly="125.58">14.95 </span>
                             <span class="period">/month</span>
                         </div>
                         <div class="plan-original-price yearly-price" style="display: none;">
-                            Was $42/month
+                            Was $179.4/year
                         </div>
-                        <p class="plan-description">Ideal for growing businesses and consultants</p>
+                        <p class="plan-description">Ideal for growing businesses</p>
                         
                         <ul class="feature-list">
                             <li><i class="fas fa-check"></i> Up to 50 clients</li>
-                            <li><i class="fas fa-check"></i> Unlimited invoices & estimates</li>
+                            <li><i class="fas fa-check"></i> 10 Users</li>
+                            <li><i class="fas fa-check"></i> Unlimited invoices</li>
                             <li><i class="fas fa-check"></i> Advanced expense tracking</li>
                             <li><i class="fas fa-check"></i> Time tracking & projects</li>
-                            <li class="feature-highlight"><i class="fas fa-check"></i> Online payment processing</li>
-                            <li><i class="fas fa-check"></i> Custom branding</li>
-                            <li><i class="fas fa-check"></i> Priority support</li>
-                            <li><i class="fas fa-check"></i> API access</li>
+                            <li><i class="fas fa-check"></i> Financial & accounting reports</li>
+                            <li><i class="fas fa-check"></i> Payment Management</li>
+                            <li><i class="fas fa-check"></i> 24/7 Priority support</li>
                         </ul>
                         
                         <button class="btn btn-accent w-100 mb-2">Start Free Trial</button>
-                        <small class="text-muted d-block text-center">14-day free trial</small>
-                    </div>
-                </div>
-
-                <!-- Business Plan -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="pricing-card h-100">
-                        <h3 class="plan-name">Business</h3>
-                        <div class="plan-price">
-                            <span class="currency">$</span><span class="price-amount" data-monthly="39.95" data-yearly="52">39.95</span>
-                            <span class="period">/month</span>
-                        </div>
-                        <div class="plan-original-price yearly-price" style="display: none;">
-                            Was $78/month
-                        </div>
-                        <p class="plan-description">For established businesses with teams</p>
-                        
-                        <ul class="feature-list">
-                            <li><i class="fas fa-check"></i> Unlimited clients</li>
-                            <li><i class="fas fa-check"></i> Everything in Professional</li>
-                            <li><i class="fas fa-check"></i> Multi-user access (5 users)</li>
-                            <li><i class="fas fa-check"></i> Advanced reporting</li>
-                            <li class="feature-highlight"><i class="fas fa-check"></i> Inventory management</li>
-                            <li><i class="fas fa-check"></i> Bank reconciliation</li>
-                            <li><i class="fas fa-check"></i> Tax preparation tools</li>
-                            <li><i class="fas fa-check"></i> Phone support</li>
-                        </ul>
-                        
-                        <button class="btn btn-primary w-100 mb-2">Start Free Trial</button>
-                        <small class="text-muted d-block text-center">14-day free trial</small>
+                        <small class="text-muted d-block text-center">90-day free trial</small>
                     </div>
                 </div>
 
                 <!-- Enterprise Plan -->
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="pricing-card h-100">
                         <h3 class="plan-name">Enterprise</h3>
                         <div class="plan-price">
-                            <span style="font-size: 1.8rem;">Custom</span>
+                            <span class="currency">$</span><span class="price-amount" data-monthly="29.95" data-yearly="251.58">29.95</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <div class="plan-original-price yearly-price" style="display: none;">
+                            Was $359.4/year
                         </div>
                         <p class="plan-description">Tailored solutions for large organizations</p>
                         
                         <ul class="feature-list">
-                            <li><i class="fas fa-check"></i> Everything in Business</li>
-                            <li><i class="fas fa-check"></i> Unlimited users</li>
+                            <li><i class="fas fa-check"></i> Unlimited clients</li>
+                            <li><i class="fas fa-check"></i> 30 users</li>
+                            <li><i class="fas fa-check"></i> Unlimited invoices</li>
                             <li><i class="fas fa-check"></i> Advanced integrations</li>
-                            <li><i class="fas fa-check"></i> Custom workflows</li>
-                            <li class="feature-highlight"><i class="fas fa-check"></i> Dedicated account manager</li>
-                            <li><i class="fas fa-check"></i> White-label options</li>
+                            <li><i class="fas fa-check"></i> Time tracking & projects</li>
+                            <li><i class="fas fa-check"></i> Financial & accounting reports</li>
+                            <li><i class="fas fa-check"></i> Payment Management</li>
                             <li><i class="fas fa-check"></i> 24/7 priority support</li>
-                            <li><i class="fas fa-check"></i> Custom training</li>
                         </ul>
-                        
-                        <button class="btn btn-primary w-100 mb-2">Contact Sales</button>
-                        <small class="text-muted d-block text-center">Custom quote available</small>
+                        <button class="btn btn-primary w-100 mb-2">Start Free Trial</button>
+                        <small class="text-muted d-block text-center">90-day free trial</small>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Feature Comparison Table -->
-    <section class="comparison-section">
-        <div class="container">
-            <h2 class="text-center mb-5">Compare All Features</h2>
-            
-            <div class="comparison-table">
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Features</th>
-                                <th class="text-center">Starter</th>
-                                <th class="text-center">Professional</th>
-                                <th class="text-center">Business</th>
-                                <th class="text-center">Enterprise</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Client Management</strong></td>
-                                <td class="text-center">5 clients</td>
-                                <td class="text-center">50 clients</td>
-                                <td class="text-center">Unlimited</td>
-                                <td class="text-center">Unlimited</td>
-                            </tr>
-                            <tr>
-                                <td>Invoicing & Estimates</td>
-                                <td class="text-center"><i class="fas fa-check feature-check"></i></td>
-                                <td class="text-center"><i class="fas fa-check feature-check"></i></td>
-                                <td class="text-center"><i class="fas fa-check feature-check"></i></td>
-                                <td class="text-center"><i class="fas fa-check feature-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Expense Tracking</td>
-                                <td class="text-center">Basic</td>
-                                <td class="text-center">Advanced</td>
-                                <td class="text-center">Advanced</td>
-                                <td class="text-center">Advanced</td>
-                            </tr>
-                            <tr>
-                                <td>Time Tracking</td>
-                                <td class="text-center"><i class="fas fa-times feature-cross"></i></td>
-                                <td class="text-center"><i class="fas fa-check feature-check"></i></td>
-                                <td class="text-center"><i class="fas fa-check feature-check"></i></td>
-                                <td class="text-center"><i class="fas fa-check feature-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Online Payments</td>
-                                <td class="text-center"><i class="fas fa-times feature-cross"></i></td>
-                                <td class="text-center"><i class="fas fa-check feature-check"></i></td>
-                                <td class="text-center"><i class="fas fa-check feature-check"></i></td>
-                                <td class="text-center"><i class="fas fa-check feature-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Multi-user Access</td>
-                                <td class="text-center"><i class="fas fa-times feature-cross"></i></td>
-                                <td class="text-center"><i class="fas fa-times feature-cross"></i></td>
-                                <td class="text-center">5 users</td>
-                                <td class="text-center">Unlimited</td>
-                            </tr>
-                            <tr>
-                                <td>Inventory Management</td>
-                                <td class="text-center"><i class="fas fa-times feature-cross"></i></td>
-                                <td class="text-center"><i class="fas fa-times feature-cross"></i></td>
-                                <td class="text-center"><i class="fas fa-check feature-check"></i></td>
-                                <td class="text-center"><i class="fas fa-check feature-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td>API Access</td>
-                                <td class="text-center"><i class="fas fa-times feature-cross"></i></td>
-                                <td class="text-center"><i class="fas fa-check feature-check"></i></td>
-                                <td class="text-center"><i class="fas fa-check feature-check"></i></td>
-                                <td class="text-center"><i class="fas fa-check feature-check"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Dedicated Support</td>
-                                <td class="text-center">Email</td>
-                                <td class="text-center">Priority</td>
-                                <td class="text-center">Phone</td>
-                                <td class="text-center">24/7 Dedicated</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- FAQ Section -->
     <section class="py-5">
         <div class="container">
-            <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+            <h2 class="category-title text-center mb-5">Frequently Asked Questions</h2>
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <div class="accordion" id="faqAccordion">
@@ -870,9 +800,39 @@
         </div>
     </footer>
 
-    <!-- Chatbot Bubble -->
-    <div class="chatbot-bubble" title="Chat with us">
-        <i class="fas fa-comments"></i>
+<!-- Chatbot Bubble Trigger -->
+    <div class="chatbot-bubble" data-bs-toggle="modal" data-bs-target="#chatbotModal">
+        <i class="fa-solid fa-comment-dots"></i>
+    </div>
+    <!-- Chatbot Modal -->
+    <div class="modal fade" id="chatbotModal" tabindex="-1" aria-labelledby="chatbotModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4">
+                <div class="modal-header bg-primary text-white rounded-top-4">
+                    <h5 class="modal-title d-flex align-items-center" id="chatbotModalLabel">
+                        YusiBooks
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="bg-primary text-white p-2 rounded-circle flex-shrink-0">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="ms-3">
+                            <p class="fw-semibold text-primary">Hey there! I'm Addy, your friendly AI Rep from YusiBooks.</p>
+                            <p class="text-secondary-emphasis mt-1">Saw that you're interested in invoice and accounting software. I'm available if you have questions!</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mt-3">
+                        <input type="text" class="form-control rounded-pill me-2" placeholder="Type your message...">
+                        <button class="btn btn-primary rounded-pill">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap JS -->
@@ -884,6 +844,7 @@
             const toggleButtons = document.querySelectorAll('.toggle-option');
             const priceAmounts = document.querySelectorAll('.price-amount');
             const yearlyPrices = document.querySelectorAll('.yearly-price');
+             const periods = document.querySelectorAll('.period');
 
             toggleButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -894,14 +855,19 @@
 
                     const billingType = this.dataset.billing;
 
-                    // Update prices
-                    priceAmounts.forEach(price => {
-                        if (billingType === 'yearly') {
-                            price.textContent = price.dataset.yearly;
-                        } else {
-                            price.textContent = price.dataset.monthly;
-                        }
-                    });
+                   
+
+                    priceAmounts.forEach((price, index) => {
+                     if (billingType === 'yearly') {
+                    price.textContent = price.dataset.yearly;
+                periods[index].textContent = "/year";   
+                 } else {
+        price.textContent = price.dataset.monthly;
+        periods[index].textContent = "/month";  
+    }
+            });
+
+                    
 
                     // Show/hide yearly price information
                     yearlyPrices.forEach(yearlyPrice => {
@@ -914,11 +880,26 @@
                 });
             });
 
-            // Chatbot interaction
-            const chatbotBubble = document.querySelector('.chatbot-bubble');
-            chatbotBubble.addEventListener('click', function() {
-                alert('Chat feature coming soon! For now, please contact us at support@yusibooks.com');
+            // Enhanced chatbot interaction
+        document.querySelector('.chatbot-bubble').addEventListener('mouseenter', function() {
+            this.style.animationPlayState = 'paused';
+        });
+
+        document.querySelector('.chatbot-bubble').addEventListener('mouseleave', function() {
+            this.style.animationPlayState = 'running';
+        });
+
+        // Form interaction enhancements
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.transition = 'transform 0.2s ease';
             });
+
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
 
             // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {

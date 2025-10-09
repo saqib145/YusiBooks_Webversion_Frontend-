@@ -30,7 +30,7 @@
             --primary-dark: #074a4a;
             --accent-color: #c3231e;
             --success-color: #0c8c36;
-            --text-dark: #212529;
+            --text-dark: #000;
             --text-muted: #6c757d;
             --border-radius-sm: 0.5rem;
             --border-radius-md: 1rem;
@@ -56,16 +56,19 @@
         }
 
         /* Enhanced Button Styles */
-        .btn {
-            font-weight: 600;
-            border-radius: 12px;
+         .btn {
+            font-weight: 500;
+            font-size: 13px;
+            margin-top: 5px;
+            border-radius: var(--border-radius-md);
             transition: var(--transition-smooth);
             border: none;
             position: relative;
             overflow: hidden;
-            text-transform: none;
-            letter-spacing: 0.5px;
         }
+        .nav-btn a{
+            margin-bottom: 5px;
+        } 
 
         .btn-accent {
             --bs-btn-bg: var(--accent-color);
@@ -111,6 +114,7 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
         }
+       
 
         .btn-outline-light:hover {
             background: rgba(255, 255, 255, 0.2);
@@ -158,7 +162,8 @@
         }
 
         .nav-link {
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 15px;
             transition: var(--transition-fast);
             position: relative;
         }
@@ -194,23 +199,40 @@
             font-weight: 700;
             box-shadow: var(--shadow-sm);
         }
+        .offcanvas-body{
+    background-color: white;
+    padding-top: 30px;
+    padding-bottom: 100px;
+    overflow-y:inherit;
+}
 
-        .container .logo img {
+       .container .logo img {
             width: 150px;
             transition: var(--transition-fast);
         }
-
-        .container .logo img:hover {
-            transform: scale(1.05);
+.hero_title1 {
+    position: relative;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 2rem;
+    font-family: 'proxima-nova', sans-serif !important;
+    color: white;
+    margin-bottom: 30px;
+}
+        
+   .text-h3{
+            color: #000;
+            font-size: 28px;
+            font-weight: 600;
+          line-height: 1.1rem;
+          margin-bottom: 30px;
         }
-    
 
         /* Business Card Styles */
         .business-card {
             height: 100%;
             border: none;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transition: var(--transition-smooth);
             border-radius: 24px;
             background: #ffffff;
             position: relative;
@@ -229,10 +251,7 @@
             background: linear-gradient(135deg, #00c9a7, #0d7878, #c3231e);
         }
 
-        .business-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        }
+        
 
         /* Business Icons with Animation */
         .business-icon {
@@ -262,15 +281,6 @@
             transform: translateX(-100%) translateY(-100%) rotate(45deg);
         }
 
-        .business-card:hover .business-icon::after {
-            transform: translateX(100%) translateY(100%) rotate(45deg);
-        }
-
-        .business-card:hover .business-icon {
-            transform: scale(1.1) rotate(8deg);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
         /* Dynamic Icon Colors - YusiBooks Theme */
         .icon-blue { background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); }
         .icon-green { background: linear-gradient(135deg, var(--success-color), #0a5d2c); }
@@ -286,16 +296,16 @@
         .icon-violet { background: linear-gradient(135deg, var(--primary-color), #4c1d95); }
 
         .business-title {
-            color: #1f2937;
-            font-weight: 700;
+            color: #000000;
+            font-weight: 600;
             margin-bottom: 1.2rem;
-            font-size: 1.4rem;
+            font-size: 18px;
             line-height: 1.3;
         }
 
         .business-description {
-            color: #64748b;
-            font-size: 1.05rem;
+            color: #000000;
+            font-size: 15px;
             line-height: 1.7;
             margin-bottom: 1.8rem;
         }
@@ -330,41 +340,30 @@
             color: var(--accent-color);
             transform: translateX(5px);
         }
+        
 
         /* Category Title Styling */
         .category-title {
-            color: #1f2937;
-            font-weight: 700;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            color: #000;
+            font-size: 28px;
+            font-weight: 600;
             text-align: center;
-            position: relative;
+          line-height: 1.1rem;
+          margin-bottom: 30px;
         }
 
-        .category-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            border-radius: 2px;
-        }
-
-        /* Hero Section - YusiBooks Style */
-        .business-hero {
+      /* Hero Section */
+        .hero {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
             position: relative;
             overflow: hidden;
-            min-height: 100vh;
+            min-height: 60vh;
             display: flex;
             align-items: center;
         }
 
-        .business-hero::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -385,11 +384,12 @@
             overflow: hidden;
             z-index: 1;
         }
+        
 
         .floating-shape {
             position: absolute;
             opacity: 0.1;
-            animation: float 8s ease-in-out infinite;
+           
         }
 
         .floating-shape:nth-child(1) {
@@ -415,8 +415,39 @@
             50% { transform: translateY(-30px) rotate(180deg); opacity: 0.2; }
         }
 
-        .text-green {
-            color: #0d7878;
+        /* Mock Interface */
+        .hero-interface {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interface-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .interface-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f57; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #28ca42; }
+
+        .interface-content {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 1.5rem;
+            color: #333;
         }
 
         .footer {
@@ -432,33 +463,24 @@
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
         }
 
-        /* Enhanced Interactive Elements */
-        .business-card:hover .business-title {
-            color: var(--primary-color);
-        }
-
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .business-hero {
-                min-height: 80vh;
+                min-height: 60vh;
+            }
+            .text-h3{
+                line-height: 2rem;
             }
             
             .category-title {
-                font-size: 2rem;
+                font-size: 1rem;
             }
             
             .business-card {
                 padding: 2rem 1.5rem;
+
+
             }
-        }
-
-        /* Animation classes */
-        .animate-slide-up {
-            animation: slideUp 0.8s ease-out;
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 1s ease-out;
         }
 
         @keyframes slideUp {
@@ -495,14 +517,43 @@
     <div class="chatbot-bubble" data-bs-toggle="modal" data-bs-target="#chatbotModal">
         <i class="fa-solid fa-comment-dots"></i>
     </div>
-    <!-- Navigation -->
-
+    <!-- Chatbot Modal -->
+    <div class="modal fade" id="chatbotModal" tabindex="-1" aria-labelledby="chatbotModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4">
+                <div class="modal-header bg-primary text-white rounded-top-4">
+                    <h5 class="modal-title d-flex align-items-center" id="chatbotModalLabel">
+                        YusiBooks
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="bg-primary text-white p-2 rounded-circle flex-shrink-0">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="ms-3">
+                            <p class="fw-semibold text-primary">Hey there! I'm Addy, your friendly AI Rep from YusiBooks.</p>
+                            <p class="text-secondary-emphasis mt-1">Saw that you're interested in invoice and accounting software. I'm available if you have questions!</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mt-3">
+                        <input type="text" class="form-control rounded-pill me-2" placeholder="Type your message...">
+                        <button class="btn btn-primary rounded-pill">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light sticky-top py-3">
         <div class="container">
             <div class="logo">
                 <a href="#" class="text-decoration-none">
                     <div class="d-flex align-items-center">
-                    <a href="index.html"><img src="assets/yusi_books_logo.jpg" alt=""></a>
+                    <a href="index.html"><img src="assets/yusi_books_logo.jpg" alt="yusibooks_logo_here"></a>
                  </div>
                 </a>
             </div>     
@@ -512,7 +563,7 @@
             
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Menu</h5>
+                    <h5 class="offcanvas-title fw-normal" id="offcanvasNavbarLabel">Menu</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -521,14 +572,14 @@
                             <a class="nav-link text-dark px-3" aria-current="page" href="features.html">Features</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-dark px-3" href="small_business.html">Small Businesses</a>
+                            <a class="nav-link text-dark px-3" href="small_business.html">Small Businesses</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark px-3" href="accounts.html">Accountants</a>
                         </li>
-                        <!-- <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a class="nav-link text-dark px-3" href="#">Resources</a>
-                        </li> -->
+                        </li>-->
                         <li class="nav-item">
                             <a class="nav-link text-dark px-3" href="pricing.html">Pricing</a>
                         </li>
@@ -536,142 +587,58 @@
                             <a class="nav-link text-dark px-3" href="contact_us.html">Contact Us</a>
                         </li>
                     </ul>
-                    <div class="d-flex flex-column flex-lg-row align-items-center gap-3 mt-3 mt-lg-0">
-                        <a href="#" class="nav-link text-green fw-semibold me-lg-3">Login</a>
-                        <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Buy Now & Save</a>
+                    <div class="nav-btn d-flex flex-column flex-lg-row align-items-left gap-3 mt-3 mt-lg-0">
+                       <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Buy Now & Save</a>
                         <a href="#" class="btn btn-accent rounded-pill px-4">Try Free</a>
+                        <a href="#" class="btn btn-primary rounded-pill px-4 me-lg-2">Login</a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    
 
-    <!-- Hero Section -->
-    <section id="home" class="business-hero" data-testid="hero-section">
-        <div class="hero-floating-elements">
-            <div class="floating-shape">
-                <i class="fas fa-chart-line fs-2"></i>
-            </div>
-            <div class="floating-shape">
-                <i class="fas fa-briefcase fs-2"></i>
-            </div>
-            <div class="floating-shape">
-                <i class="fas fa-users fs-2"></i>
-            </div>
+     <!-- Hero Section -->
+  <section class="hero">        
+  <div class="container position-relative mt-4" style="z-index: 2;">
+  <div class="row align-items-center">
+
+      <!-- Left Column (Text) -->
+      <div class="col-12 col-md-6 mb-4 mb-md-0">
+        <div class="hero-content text-center text-md-start">
+          <h1 class="hero_title1 display-4 text-lg-start1">
+            Smart Solutions <br>For Your Business <br>
+          </h1>
+          <p class="mb-5 opacity-90">
+            Discover comprehensive business solutions designed specifically for your industry and company size. From startups to enterprises, we have the tools to help you succeed.
+          </p>
         </div>
-        
-        <div class="container position-relative" style="z-index: 2;">
-            <div class="row align-items-center min-vh-100 py-5">
-                <div class="col-lg-6 animate-slide-up" data-testid="hero-content">
-                    <h1 class="display-3 fw-bold mb-4" data-testid="hero-title">
-                        Smart Solutions <br>For Your Business <br> 
-                        <span class="text-white"></span>
-                    </h1>
-                    <p class="lead mb-5 text-light" data-testid="hero-description">
-                        Discover comprehensive business solutions designed specifically for your industry and company size. From startups to enterprises, we have the tools to help you succeed.
-                    </p>
-                    <div class="d-flex flex-column flex-sm-row gap-3">
-                        <a href="#business-size" class="btn btn-light btn-lg px-5 py-3" data-testid="btn-explore-solutions">
-                            <i class="fas fa-rocket me-2"></i>Explore Solutions
-                        </a>
-                        <a href="#contact" class="btn btn-outline-light btn-lg px-5 py-3" data-testid="btn-watch-demo">
-                            <i class="fas fa-play me-2"></i>Watch Demo
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-6 mt-5 mt-lg-0 animate-fade-in" data-testid="hero-image">
-                    <div class="position-relative">
-                        <img src="assets/business_hero_img.png" 
-                             alt="Professional small business owner in modern workspace" 
-                             class="img-fluid rounded-4 shadow-lg"
-                             data-testid="hero-main-image">
-                        
-                        <!-- Floating Stats Cards -->
-                        <div class="position-absolute top-0 start-0 translate-middle" data-testid="stat-businesses">
-                            <div class="card shadow-lg border-0 p-3">
-                                <div class="d-flex align-items-center">
-                                    <div class="bg-success rounded-circle me-2" style="width: 12px; height: 12px;"></div>
-                                    <span class="fw-semibold small">1000+ Businesses</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="position-absolute bottom-0 end-0 translate-middle" data-testid="stat-support">
-                            <div class="card shadow-lg border-0 p-3">
-                                <div class="d-flex align-items-center">
-                                    <div class="rounded-circle me-2" style="width: 12px; height: 12px; background-color: var(--accent-color);"></div>
-                                    <span class="fw-semibold small">24/7 Support</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+
+      <!-- Right Column (Image) -->
+      <div class="col-12 col-md-6">
+        <div class="hero-interface d-flex justify-content-center justify-content-md-end">
+          <img src="assets/business_hero_img.png" alt="Dashboard Mockup" class="img-fluid rounded">
         </div>
-    </section>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
     <!-- Business Size Section -->
     <section id="business-size" class="section-business-size py-5" data-testid="business-size-section">
         <div class="container py-5">
             <div class="text-center mb-5 animate-slide-up" data-testid="business-size-header">
-                <h2 class="category-title" data-testid="business-size-title">Solutions by Business Size</h2>
-                <p class="lead text-muted mx-auto" style="max-width: 600px;" data-testid="business-size-description">
+                <h3 class="text-h3 text-center text-dark">Solutions by Business Size</h3>
+               <p class="mx-auto" style="max-width: 600px;" data-testid="industry-description">
                     Whether you're just starting out or running an established enterprise, we have the right tools and solutions for your business size.
                 </p>
+                   
             </div>
 
             <div class="row g-4">
-                <!-- Sole Proprietorship -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="business-card h-100" data-testid="business-card-sole-proprietorship">
-                        <div class="business-icon icon-blue">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <h3 class="business-title" data-testid="business-title-sole-proprietorship">Sole Proprietorship</h3>
-                        <p class="business-description" data-testid="business-description-sole-proprietorship">
-                            Perfect for individual entrepreneurs and single-owner businesses. Simple, cost-effective solutions to get you started.
-                        </p>
-                        <!--<a href="#" class="business-link" data-testid="business-link-sole-proprietorship">
-                            Learn More <i class="fas fa-arrow-right ms-2"></i>
-                        </a> -->
-                    </div>
-                </div>
-
-                <!-- Partnership -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="business-card h-100" data-testid="business-card-partnership">
-                        <div class="business-icon icon-green">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h3 class="business-title" data-testid="business-title-partnership">Partnership</h3>
-                        <p class="business-description" data-testid="business-description-partnership">
-                            Ideal for businesses with multiple owners. Shared responsibilities, resources, and collaborative decision-making tools.
-                        </p>
-                        <!--<a href="#" class="business-link" data-testid="business-link-partnership">
-                            Learn More <i class="fas fa-arrow-right ms-2"></i>
-                        </a>-->
-                    </div>
-                </div>
-
-                <!-- Corporation -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="business-card h-100" data-testid="business-card-corporation">
-                        <div class="business-icon icon-purple">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <h3 class="business-title" data-testid="business-title-corporation">Corporation</h3>
-                        <p class="business-description" data-testid="business-description-corporation">
-                            Comprehensive solutions for incorporated businesses. Advanced features for complex organizational structures and compliance.
-                        </p>
-                        <!--<a href="#" class="business-link" data-testid="business-link-corporation">
-                            Learn More <i class="fas fa-arrow-right ms-2"></i>
-                        </a>-->
-                    </div>
-                </div>
-
                 <!-- Small Business -->
                 <div class="col-md-6 col-lg-4">
                     <div class="business-card h-100" data-testid="business-card-small-business">
@@ -728,35 +695,13 @@
         <div class="container py-5">
             <div class="text-center mb-5 animate-slide-up" data-testid="industry-header">
                 <h2 class="category-title" data-testid="industry-title">Solutions by Industry</h2>
-                <p class="lead text-muted mx-auto" style="max-width: 600px;" data-testid="industry-description">
+                <p class="mx-auto" style="max-width: 600px;" data-testid="industry-description">
                     Industry-specific solutions designed to meet the unique challenges and requirements of your business sector.
                 </p>
             </div>
 
             <div class="row g-4">
-                <!-- Restaurant & Food Service -->
-                <div class="col-sm-6 col-lg-4 col-xl-3">
-                    <div class="business-card h-100" data-testid="business-card-restaurant">
-                        <div class="text-center mb-4">
-                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                                 alt="Modern restaurant interior" 
-                                 class="img-fluid rounded-3 mb-3"
-                                 data-testid="industry-image-restaurant">
-                        </div>
-                        <div class="business-icon icon-red mx-auto mb-3" style="width: 4rem; height: 4rem; font-size: 1.5rem;">
-                            <i class="fas fa-utensils"></i>
-                        </div>
-                        <h4 class="business-title text-center mb-3" data-testid="industry-title-restaurant">Restaurant & Food Service</h4>
-                        <p class="business-description text-center small" data-testid="industry-description-restaurant">
-                            Point of sale, inventory management, and customer loyalty programs.
-                        </p>
-                        <div class="text-center">
-                            <!--<a href="#" class="business-link" data-testid="industry-link-restaurant">
-                                Learn More <i class="fas fa-arrow-right ms-1"></i>
-                            </a>-->
-                        </div>
-                    </div>
-                </div>
+                
 
                 <!-- Retail -->
                 <div class="col-sm-6 col-lg-4 col-xl-3">
@@ -768,11 +713,11 @@
                                  data-testid="industry-image-retail">
                         </div>
                         <div class="business-icon icon-blue mx-auto mb-3" style="width: 4rem; height: 4rem; font-size: 1.5rem;">
-                            <i class="fas fa-shopping-bag"></i>
+                            <i class="fa fa-file-text"></i>
                         </div>
-                        <h4 class="business-title text-center mb-3" data-testid="industry-title-retail">Retail</h4>
+                        <h4 class="business-title text-center mb-3" data-testid="industry-title-retail">Invoice</h4>
                         <p class="business-description text-center small" data-testid="industry-description-retail">
-                            E-commerce integration, inventory tracking, and customer analytics.
+                            Invoicing, time tracking, and customer analytics.
                         </p>
                         <div class="text-center">
                             <!--<a href="#" class="business-link" data-testid="industry-link-retail">
@@ -782,29 +727,7 @@
                     </div>
                 </div>
 
-                <!-- Healthcare -->
-                <div class="col-sm-6 col-lg-4 col-xl-3">
-                    <div class="business-card h-100" data-testid="business-card-healthcare">
-                        <div class="text-center mb-4">
-                            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                                 alt="Healthcare clinic" 
-                                 class="img-fluid rounded-3 mb-3"
-                                 data-testid="industry-image-healthcare">
-                        </div>
-                        <div class="business-icon icon-green mx-auto mb-3" style="width: 4rem; height: 4rem; font-size: 1.5rem;">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <h4 class="business-title text-center mb-3" data-testid="industry-title-healthcare">Healthcare</h4>
-                        <p class="business-description text-center small" data-testid="industry-description-healthcare">
-                            Patient management, appointment scheduling, and HIPAA compliance.
-                        </p>
-                        <div class="text-center">
-                            <!--<a href="#" class="business-link" data-testid="industry-link-healthcare">
-                                Learn More <i class="fas fa-arrow-right ms-1"></i>
-                            </a>-->
-                        </div>
-                    </div>
-                </div>
+               
 
                 <!-- Technology -->
                 <div class="col-sm-6 col-lg-4 col-xl-3">
@@ -824,54 +747,6 @@
                         </p>
                         <div class="text-center">
                             <!--<a href="#" class="business-link" data-testid="industry-link-technology">
-                                Learn More <i class="fas fa-arrow-right ms-1"></i>
-                            </a>-->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Manufacturing -->
-                <div class="col-sm-6 col-lg-4 col-xl-3">
-                    <div class="business-card h-100" data-testid="business-card-manufacturing">
-                        <div class="text-center mb-4">
-                            <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                                 alt="Manufacturing facility" 
-                                 class="img-fluid rounded-3 mb-3"
-                                 data-testid="industry-image-manufacturing">
-                        </div>
-                        <div class="business-icon icon-orange mx-auto mb-3" style="width: 4rem; height: 4rem; font-size: 1.5rem;">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <h4 class="business-title text-center mb-3" data-testid="industry-title-manufacturing">Manufacturing</h4>
-                        <p class="business-description text-center small" data-testid="industry-description-manufacturing">
-                            Supply chain management, quality control, and production planning.
-                        </p>
-                        <div class="text-center">
-                            <a href="#" class="business-link" data-testid="industry-link-manufacturing">
-                                Learn More <i class="fas fa-arrow-right ms-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Real Estate -->
-                <div class="col-sm-6 col-lg-4 col-xl-3">
-                    <div class="business-card h-100" data-testid="business-card-real-estate">
-                        <div class="text-center mb-4">
-                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
-                                 alt="Real estate office" 
-                                 class="img-fluid rounded-3 mb-3"
-                                 data-testid="industry-image-real-estate">
-                        </div>
-                        <div class="business-icon icon-teal mx-auto mb-3" style="width: 4rem; height: 4rem; font-size: 1.5rem;">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <h4 class="business-title text-center mb-3" data-testid="industry-title-real-estate">Real Estate</h4>
-                        <p class="business-description text-center small" data-testid="industry-description-real-estate">
-                            Property management, client relationship management, and listing tools.
-                        </p>
-                        <div class="text-center">
-                            <!--<a href="#" class="business-link" data-testid="industry-link-real-estate">
                                 Learn More <i class="fas fa-arrow-right ms-1"></i>
                             </a>-->
                         </div>
@@ -906,7 +781,7 @@
                 <div class="col-sm-6 col-lg-4 col-xl-3">
                     <div class="business-card h-100" data-testid="business-card-professional">
                         <div class="text-center mb-4">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" 
+                            <img src="assets/pro_man.png" 
                                  alt="Professional services office" 
                                  class="img-fluid rounded-3 mb-3"
                                  data-testid="industry-image-professional">
@@ -934,7 +809,7 @@
         <div class="container py-5">
             <div class="row justify-content-center text-center text-white">
                 <div class="col-lg-8">
-                    <h2 class="display-4 fw-bold mb-4" data-testid="cta-title">Ready to Transform Your Business?</h2>
+                    <h2 class=" text-h3 text-white display-6 mb-4" data-testid="cta-title">Ready to Transform Your Business?</h2>
                     <p class="lead mb-5" data-testid="cta-description">
                         Join thousands of businesses already using YusiBooks to streamline their operations and accelerate growth.
                     </p>
@@ -1095,17 +970,6 @@
         document.querySelectorAll('.animate-slide-up, .animate-fade-in').forEach(el => {
             el.style.animationPlayState = 'paused';
             observer.observe(el);
-        });
-
-        // Business card hover effects
-        document.querySelectorAll('.business-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-15px) scale(1.03)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
         });
     </script>
 </body>
